@@ -1,6 +1,53 @@
 一、案例说明：
-	1、案例采用JavaCongfig显示配置和XML显示配置结合的一个综合案例。
+	1、案例是采用JavaCongfig显示配置和XML显示配置结合的一个综合案例。
 	2、案例中使用了@Import和@ImportResource注解在XML配置和JavaCongfig显示配置之间进行相互导入。
 	3、案例在xml配置文件【spring-wiringcd.xml】中采用了构造器注入的方式，并使用了c命名空间
+	4、案例采用了构造器注入方式
+
 二、源代码文件（.java）介绍：
+	【CompactDisc.java】：接口，（光碟）
+	【BlankDisc.java】：类，（蓝光光碟）实现了CompactDisc接口。
+	【SgtPeppers.java】：类，实现了CompactDisc接口。
+		
+	【MediaPlayer.java]:接口，（媒体播放器接口）。
+	【CDPlayer.java】：类，CD播放器。
+	
+	【CDConfig.java】：类，Bean装配配置文件（Java显示配置方式<JavaConfig>）
+	【CDPlayerConfig.java】：类，Bean装配配置文件（Java显示配置方式<JavaConfig>），该配置类使用@Importdao注解导入了【CDConfig.java】配置类。
+	【SoundSystemConfig.java]：类，Bean装配配置文件（Java显示配置方式<JavaConfig>），
+			该配置类使用@ImportResource注解导入了【spring-wiringcd.xml】配置文件，
+			并且使用@Import注解导入【CDPlayerConfig】配置类
+	
+	【spring-wiringcd.xml】XML显示配置文件，该xml文件使用了c命名空间。
+			并且结合<constructor-arg>和<list>标签给构造器传入初始化参数。
+			
+	【CDPlayerTest】：类，用于测试和调试案例。该类使用@Autowired注解、@Qualifier注解、@RunWith、@ContextConfiguration和@Test注解。
+
+三、知识点：
+	1、@Configuration：用于定义配置类，可替换xml配置文件，被注解的类内部包含有一个或多个被@Bean注解的方法，
+	      这些方法将会被AnnotationConfigApplicationContext或AnnotationConfigWebApplicationContext类进行扫描，
+	      并用于构建bean定义，初始化Spring容器。	      
+	      注意：@Configuration注解的配置类有如下要求：
+		   @Configuration不可以是final类型；
+		   @Configuration不可以是匿名类；
+		       嵌套的configuration必须是静态类。
+	2、@Import：它的作用和Spring的xml配置文件中的<import>标签类似，可以导入另一个注解了@Configuration的配置类，
+                 也就是说，如果项目中引用了一些第三方的类库，如我用到的Redisson库，其内部包含很多@Configuration注解的配置类，
+                 但是我的项目没有自动扫描他的包，那么就可以用@Import(XXX.class)来导入其配置类使其生效。在Spring4.2以后，@Import还支持
+                 导入普通的没有@Configuration注解的类，并将其实例化加入IOC容器中。
+    3、@Bean：它是一个方法级别上的注解，主要用在@Configuration注解的类里，也可以用在@Component注解的类里。
+    4、@ImportResource：用于导入XML资源配置文件。
+	5、@ContextConfiguration：Spring整合JUnit4测试时，使用此注解引入一个或多个配置文件（即可以是JavaConfig配置类，
+	     也可以是XML配置文件）。例如：
+		@ContextConfiguration(Locations="../applicationContext.xml")  
+		@ContextConfiguration(classes = SimpleConfiguration.class)
+		@ContextConfiguration(locations = { "classpath*:/spring1.xml", "classpath*:/spring2.xml" }) 
+	6、@Qualifier：用于指定一个确定的Bean进行装配。一般与@Autowired注解一起使用。
+	7、@Autowired：它可以对类成员变量、方法及构造函数进行标注，完成自动装配的工作。 通过 @Autowired的使用来消除 set ，get方法。
+	      一般与组件扫描@ComponentScan注解一起使用。结合@ImportResource注解导入XML配置文件时
+	      必须在XML文件中添加<context:annotation-config/>标签才能被@Autowired注解织入xml文件中的Bean。
+	8、XML配置文件中的c和p命名空间：在通过构造方法或set方法给bean注入关联项时通常是通过constructor-arg元素和property元素来定义的。
+	     在有了p命名空间和c命名空间时我们可以简单的把它们当做bean的一个属性来进行定义。
+	9、@RunWith(SpringJUnit4ClassRunner.class)：用于单元测试。
+
 	

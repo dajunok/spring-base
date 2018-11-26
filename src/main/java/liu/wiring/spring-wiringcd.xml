@@ -11,14 +11,14 @@
           c:_0="Sgt. Pepper's Lonely Hearts Club Band"
           c:_1="The Beatles">
               <constructor-arg>
-                     <list>
-                            <value>Sgt. Pepper's Lonely Hearts Club Band</value>
-                            <value>With a Little Help from My Friends</value>
-                            <value>Lucy in the Sky with Diamonds</value>
-                            <value>Getting Better</value>
-                            <value>Fixing a Hole</value>
-                            <!-- 此处注释必须添加，去掉后会报错（原因不明）！！ -->
-                     </list>
+                   <list>
+                         <value>Sgt. Pepper's Lonely Hearts Club Band</value>
+                         <value>With a Little Help from My Friends</value>
+                         <value>Lucy in the Sky with Diamonds</value>
+                         <value>Getting Better</value>
+                         <value>Fixing a Hole</value>
+                         <!-- 此处注释必须添加，去掉后会报错（原因不明）！！ -->
+                   </list>
               </constructor-arg>
        </bean>
 </beans>
