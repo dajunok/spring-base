@@ -1,0 +1,6 @@
+一、案例说明：
+	1、案例采用JavaCongfig显示配置和XML显示配置结合的一个综合案例。
+	2、案例中使用了@Import和@ImportResource注解在XML配置和JavaCongfig显示配置之间进行相互导入。
+	3、案例在xml配置文件【spring-wiringcd.xml】中采用了构造器注入的方式，并使用了c命名空间
+二、源代码文件（.java）介绍：
+	
