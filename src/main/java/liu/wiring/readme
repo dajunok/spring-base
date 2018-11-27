@@ -24,7 +24,7 @@
 	【CDPlayerTest】：类，用于测试和调试案例。该类使用@Autowired注解、@Qualifier注解、@RunWith、@ContextConfiguration和@Test注解。
 
 三、知识点：
-	1、@Configuration：用于定义配置类，可替换xml配置文件，被注解的类内部包含有一个或多个被@Bean注解的方法，
+	1、@Configuration：用于定义配置类，可替换xml配置文件（相当与<beans>标签），被注解的类内部可包含有一个或多个被@Bean注解的方法，
 	      这些方法将会被AnnotationConfigApplicationContext或AnnotationConfigWebApplicationContext类进行扫描，
 	      并用于构建bean定义，初始化Spring容器。	      
 	      注意：@Configuration注解的配置类有如下要求：
@@ -43,7 +43,9 @@
 		@ContextConfiguration(classes = SimpleConfiguration.class)
 		@ContextConfiguration(locations = { "classpath*:/spring1.xml", "classpath*:/spring2.xml" }) 
 	6、@Qualifier：用于指定一个确定的Bean进行装配。一般与@Autowired注解一起使用。
-	7、@Autowired：它可以对类成员变量、方法及构造函数进行标注，完成自动装配的工作。 通过 @Autowired的使用来消除 set ，get方法。
+	7、@Autowired：实例化bean中的对象，可以提供一个已经实例化好的对象。  @Autowired是从spring容器中获取的对象。表示被修饰的类需要注入对象,
+	  spring会扫描所有被@Autowired标注的类,然后根据 类型 在ioc容器中找到匹配的类注入。
+	      它可以对类成员变量、方法及构造函数进行标注，完成自动装配的工作。 通过 @Autowired的使用来消除 set ，get方法。
 	      一般与组件扫描@ComponentScan注解一起使用。结合@ImportResource注解导入XML配置文件时
 	      必须在XML文件中添加<context:annotation-config/>标签才能被@Autowired注解织入xml文件中的Bean。
 	8、XML配置文件中的c和p命名空间：在通过构造方法或set方法给bean注入关联项时通常是通过constructor-arg元素和property元素来定义的。

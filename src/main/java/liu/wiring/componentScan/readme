@@ -1,0 +1,30 @@
+一、案例说明：
+	1、案例采用组件扫描（component Scanning）和自动装配（autowiring）结合使用，将显示配置降低到最少。
+	2、案例采用注解形式，使用了@Component、@Configuration和@ComponentScan和@Autowired注解
+	3、案例调试使用了@ContextConfiguration、@RunWith和@org.junit.Test注解
+二、源代码文件（.java）介绍：
+	【HelloWorld.java】：接口。
+	【HelloWorldImpl.java】：POJO，实现了HelloWorld接口。该类添加@Component注解，将类声明为组件。
+	
+	【JavaConfig.java】：JavaConfig配置类，该类添加了@Configuration和@ComponentScan注解。	
+	【Test.java】：案例调试类。该类添加了@RunWith、@Autowired、@ContextConfiguration和@org.junit.Test注解。
+三、知识点：
+	1、@Component：注解表明该类会作为组件类， 并告知Spring要为这个类创建bean。它和@bean有很大的区别，@Component（包括@Service
+	      和@Repository）用于自动检测和使用类路径扫描自动配置bean（即需要使用@ComponentScan注解激活）。
+	      被@Component注释的类和Bean之间存在隐式的一对一映射（即每个类一个bean）。这种方式对需要进行逻辑处理的控制非常有限，因为它纯粹是声明性的。
+	      而@Bean用于显式声明单个bean，而不是让Spring像上面那样自动执行它。它将bean的声明与类定义分离，并允许您精确地创建和配置bean。
+	2、@ComponentScan：该注解对应XML配置中的<context:component-scan>标签，和XML配置中的<context:annotation-config/>标签
+	       有着相似和不同。它们都是用于激活哪些已经在spring容器里注册过的bean上面的注解（也就是说添加了这种注解后， @Autowire注解才能被系统识别）。
+	  <context:annotation-config/>标签对于没有在spring容器中注册的bean，它并不能执行任何操作。
+	      而@ComponentScan注解除了具有的功能外，还具有自动将带有@component,@service,@Repository等注解的对象注册到spring容器中的功能。
+	3、@Configuration：用于定义配置类，可替换xml配置文件（相当与<beans>标签），被注解的类内部可包含有一个或多个被@Bean注解的方法，
+	      这些方法将会被AnnotationConfigApplicationContext或AnnotationConfigWebApplicationContext类进行扫描，
+	      并用于构建bean定义，初始化Spring容器。
+	  <1>@Configuration配置spring并启动spring容器
+	  <2>@Configuration启动容器+@Bean注册Bean
+	  <3>@Configuration启动容器+@ComponentScan+@Component注册Bean
+	 4、@Autowired：实例化bean中的对象，可以提供一个已经实例化好的对象。  @Autowired是从spring容器中获取对象。表示被修饰的类需要注入对象,
+	  spring会扫描所有被@Autowired标注的类,然后根据 类型 在ioc容器中找到匹配的类注入。
+	      它可以对类成员变量、方法及构造函数进行标注，完成自动装配的工作。 通过 @Autowired的使用来消除 set ，get方法。
+	      一般与组件扫描@ComponentScan注解一起使用。结合@ImportResource注解导入XML配置文件时
+	      必须在XML文件中添加<context:annotation-config/>标签才能被@Autowired注解织入xml文件中的Bean。

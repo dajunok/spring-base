@@ -1,0 +1,18 @@
+一、案例说明：
+	1、案例单纯的采用XML配置，结合<context:annotatio>标签+@Autowired注解形式。
+	2、案例调试时采用了ClassPathXmlApplicationContext类获取XML资源配置文件。
+二、源代码文件（.java）介绍：
+	【Emp.java】：接口。
+	【EmpDao.java】：POJO，实现了Emp接口。
+	【UserDao】：POJO，实现了Emp接口。
+	
+	【EmpService】：POJO，使用@Autowired自动织入XML配置中注册的Bean，并且使用@Qualifier注解限定唯一的Bean。	
+	【Test.java】：案例调试类，使用ClassPathXmlApplicationContext类获取XML资源配置文件。
+三、知识点：
+	1、<context:annotatio>标签：在XML中注册Bean，并且采用@Autowired注解自动注入Bean的话，必须使用该标签。
+	        该标签用于激活哪些已经在spring容器里注册过的bean上面的注解（也就是说添加这种标签后， @Autowire注解才能被系统识别）。
+	2、@Autowired：实例化bean中的对象，可以提供一个已经实例化好的对象。  @Autowired是从spring容器中获取的对象。表示被修饰的类需要注入对象,
+	  spring会扫描所有被@Autowired标注的类,然后根据 类型 在ioc容器中找到匹配的类注入。
+	      它可以对类成员变量、方法及构造函数进行标注，完成自动装配的工作。 通过 @Autowired的使用来消除 set ，get方法。
+	      一般与组件扫描@ComponentScan注解一起使用。结合@ImportResource注解导入XML配置文件时
+	      必须在XML文件中添加<context:annotation-config/>标签才能被@Autowired注解织入xml文件中的Bean。
