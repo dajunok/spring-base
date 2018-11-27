@@ -1,0 +1,15 @@
+一、案例说明：
+	1、案例采用XML配置+构造器注入方式，未使用任何注解。
+	2、案例在XML配置中使用了Bean属性autowire="constructor"实现自动装配
+二、源代码文件（.java）介绍：
+	【Emp.java】：接口。
+	【EmpDao.java】：POJO,实现了Emp接口，被注入的类。
+	【UserDao.java】：POJO，实现了Emp接口，被注入的类。
+	
+	【EmpService.java】：构造器注入类。通过构造器注入EmpDao或UserDao。
+	【Test.java】：案例调试类。使用ClassPathXmlApplicationContext类获取XML资源配置文件。
+三、知识点：
+	1、autowire="constructor"：把与Bean的构造器入参具有相同类型的其他Bean自动装配到Bean的构造器的对应入参中。
+	2、同时这种方式也存在和byType一样的缺点，如果Spring找到了多个Bean的，他们的类型与需要自动装配的属性的类型都匹配，
+	       那么Spring会抛出异常，而不是选择注入哪个。
+	

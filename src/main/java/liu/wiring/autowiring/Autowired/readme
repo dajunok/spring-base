@@ -1,0 +1,12 @@
+一、案例说明：
+	1、案例采用XML配置文件+@Autowired注入方式实现自动装配。
+	2、案例使用了<context:annotation-config/>标签，该标签用于识别@Autowired注解。
+二、源代码文件（.java）介绍：
+	【Emp.java】：接口。
+	【EmpDao.java】：POJO,实现了Emp接口，被注入的类。
+	
+	【EmpService.java】：构造器注入类。通过@Autowired注解注入EmpDao
+	【Test.java】：案例调试类。使用ClassPathXmlApplicationContext类获取XML资源配置文件。
+三、知识点：
+	1、@Autowired注解缺点：注解注入固然方便，但是也存在缺点，即被标注的属性或参数必须是可注入的。
+	      避免抛出异常，那么我们就可以在@Autowired中添加required属性，表示是否一定要进行装配
