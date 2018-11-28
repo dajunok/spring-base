@@ -8,6 +8,10 @@
 	
 	【EmpService.java】：构造器注入类。通过构造器注入EmpDao或UserDao。
 	【Test.java】：案例调试类。使用ClassPathXmlApplicationContext类获取XML资源配置文件。
+	
+	【spring-autowiringConstructor.xml】：spring Bean XML配置文件。
+		1、在XML配置文件中使用了p命名空间。
+	 	2、在<bean>标签中使用了autowire="constructor"属性和 autowire-candidate="false"属性。
 三、知识点：
 	1、autowire="constructor"：把与Bean的构造器入参具有相同类型的其他Bean自动装配到Bean的构造器的对应入参中。
 	2、同时这种方式也存在和byType一样的缺点，如果Spring找到了多个Bean的，他们的类型与需要自动装配的属性的类型都匹配，

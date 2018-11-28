@@ -7,6 +7,10 @@
 	【DigitalVideo.java】：POJO（DVD碟），被注入的类。
 	
 	【Test.java】：案例调试类。使用ClassPathXmlApplicationContext类获取XML资源配置文件。
+	
+	【spring-autowiringByname.xml】：spring Bean XML配置文件。
+	 	1、在<bean>标签中使用了autowire="byName"属性。
+	
 三、知识点：
 	1、autowire="byName"属性：把与Bean的属性具有相同名字（或ID）的其他Bean自动装配到Bean的对应属性中。
 	      如果没有跟属性的名字相匹配的Bean，该属性不进行装配。

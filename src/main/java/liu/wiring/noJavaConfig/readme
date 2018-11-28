@@ -6,10 +6,14 @@
 	【EmpDao.java】：POJO，实现了Emp接口。
 	【UserDao】：POJO，实现了Emp接口。
 	
-	【EmpService】：POJO，使用@Autowired自动织入XML配置中注册的Bean，并且使用@Qualifier注解限定唯一的Bean。	
+	【EmpService.java】：POJO，使用@Autowired自动织入XML配置中注册的Bean，并且使用@Qualifier注解限定唯一的Bean。	
 	【Test.java】：案例调试类，使用ClassPathXmlApplicationContext类获取XML资源配置文件。
+	
+	【spring-nojavaconfig.xml】：spring Bean XML配置文件。
+	 	1、该配置文件中使用了context命名空间。
+	    2、该配置文件中 使用了<context:annotation-config/>标签。
 三、知识点：
-	1、<context:annotatio>标签：在XML中注册Bean，并且采用@Autowired注解自动注入Bean的话，必须使用该标签。
+	1、<context:annotatio-config>标签：在XML中注册Bean，并且采用@Autowired注解自动注入Bean的话，必须使用该标签。
 	        该标签用于激活哪些已经在spring容器里注册过的bean上面的注解（也就是说添加这种标签后， @Autowire注解才能被系统识别）。
 	2、@Autowired：实例化bean中的对象，可以提供一个已经实例化好的对象。  @Autowired是从spring容器中获取的对象。表示被修饰的类需要注入对象,
 	  spring会扫描所有被@Autowired标注的类,然后根据 类型 在ioc容器中找到匹配的类注入。

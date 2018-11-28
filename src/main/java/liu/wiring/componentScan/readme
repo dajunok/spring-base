@@ -2,12 +2,14 @@
 	1、案例采用组件扫描（component Scanning）和自动装配（autowiring）结合使用，将显示配置降低到最少。
 	2、案例采用注解形式，使用了@Component、@Configuration和@ComponentScan和@Autowired注解
 	3、案例调试使用了@ContextConfiguration、@RunWith和@org.junit.Test注解
+
 二、源代码文件（.java）介绍：
 	【HelloWorld.java】：接口。
 	【HelloWorldImpl.java】：POJO，实现了HelloWorld接口。该类添加@Component注解，将类声明为组件。
 	
 	【JavaConfig.java】：JavaConfig配置类，该类添加了@Configuration和@ComponentScan注解。	
 	【Test.java】：案例调试类。该类添加了@RunWith、@Autowired、@ContextConfiguration和@org.junit.Test注解。
+
 三、知识点：
 	1、@Component：注解表明该类会作为组件类， 并告知Spring要为这个类创建bean。它和@bean有很大的区别，@Component（包括@Service
 	      和@Repository）用于自动检测和使用类路径扫描自动配置bean（即需要使用@ComponentScan注解激活）。

@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beansProjectDescription>
 	<version>1</version>
-	<pluginVersion><![CDATA[3.9.6.201809180658-RELEASE]]></pluginVersion>
+	<pluginVersion><![CDATA[3.9.5.201807030714-RELEASE]]></pluginVersion>
 	<configSuffixes>
 		<configSuffix><![CDATA[xml]]></configSuffix>
 	</configSuffixes>
 	<enableImports><![CDATA[false]]></enableImports>
 	<configs>
 		<config>src/main/java/liu/wiring/spring-wiringcd.xml</config>
-		<config>src/main/java/liu/wiring/autowiring/constructor/spring-autowiringConstructor.xml</config>
-		<config>src/main/java/liu/wiring/autowiring/Autowired/spring-autowiringAutowired.xml</config>
+		<config>src/main/java/liu/wiring/autowiring/Ambiguity/spring-autowiringAmbiguity.xml</config>
 	</configs>
 	<autoconfigs>
 	</autoconfigs>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+						http://www.springframework.org/schema/beans/spring-beans.xsd
+						http://www.springframework.org/schema/context
+						http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+	
+	<!--<context:annotation-config/>标签用于识别@Autowired注解  -->
+	<context:annotation-config/>
+	
+	<!--Course Bean  -->
+	<bean id="englishClass" class="liu.wiring.autowiring.Ambiguity.Course" autowire="constructor"
+	      c:_0="英语课"/>
+	<bean id="chineseClass" class="liu.wiring.autowiring.Ambiguity.Course"
+		  c:_0="中文课"
+	      c:teacher-ref="chineseTeacher"
+	      c:student-ref="student_zh"/>
+	<bean id="mathematicsClass" class="liu.wiring.autowiring.Ambiguity.Course" 
+		  c:_0="数学课"
+	      c:teacher-ref="mathematicsTeacher"
+	      c:student-ref="student_zh"/>	
+	<bean id="physicsClass" class="liu.wiring.autowiring.Ambiguity.Course"
+		  c:_0="物理课"
+	      c:teacher-ref="physicsTeacher"
+	      c:student-ref="student_liu"/>	
+	<bean id="chemistryClass" class="liu.wiring.autowiring.Ambiguity.Course"
+		  c:_0="物理课"
+	      c:teacher-ref="chemistryTeacher"
+	      c:student-ref="student_li"/>      
+	
+	<!-- Teachers Bean -->
+	<bean id="chineseTeacher" class="liu.wiring.autowiring.Ambiguity.Teacher"
+	      c:_0="Caixiankui"/>
+	<bean id="englishTeacher" class="liu.wiring.autowiring.Ambiguity.Teacher" primary="true"
+	      c:_0="Duanxinlan"/>
+	<bean id="mathematicsTeacher" class="liu.wiring.autowiring.Ambiguity.Teacher"
+	      c:_0="wanglaoshi"/>
+	<bean id="physicsTeacher" class="liu.wiring.autowiring.Ambiguity.Teacher"
+	      c:_0="zhanglaoshi"/>
+	<bean id="chemistryTeacher" class="liu.wiring.autowiring.Ambiguity.Teacher"
+	      c:_0="Houlaoshi"/>
+	      
+	
+	<!-- Studens Bean-->
+	<bean id="student_zh" class="liu.wiring.autowiring.Ambiguity.Student" primary="true"
+		  c:_0="ZhanSan"/>
+    <bean id="student_li" class="liu.wiring.autowiring.Ambiguity.Student" 
+		  c:_0="LiSi"/>
+	<bean id="student_liu" class="liu.wiring.autowiring.Ambiguity.Student" 
+		  c:_0="Liulijun"/>
+</beans>

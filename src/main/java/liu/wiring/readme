@@ -18,11 +18,10 @@
 			该配置类使用@ImportResource注解导入了【spring-wiringcd.xml】配置文件，
 			并且使用@Import注解导入【CDPlayerConfig】配置类
 	
-	【spring-wiringcd.xml】XML显示配置文件，该xml文件使用了c命名空间。
-			并且结合<constructor-arg>和<list>标签给构造器传入初始化参数。
-			
 	【CDPlayerTest】：类，用于测试和调试案例。该类使用@Autowired注解、@Qualifier注解、@RunWith、@ContextConfiguration和@Test注解。
 
+	【spring-wiringcd.xml】XML显示配置文件，该xml文件使用了c命名空间。
+			并且结合<constructor-arg>和<list>标签给构造器传入初始化参数。
 三、知识点：
 	1、@Configuration：用于定义配置类，可替换xml配置文件（相当与<beans>标签），被注解的类内部可包含有一个或多个被@Bean注解的方法，
 	      这些方法将会被AnnotationConfigApplicationContext或AnnotationConfigWebApplicationContext类进行扫描，

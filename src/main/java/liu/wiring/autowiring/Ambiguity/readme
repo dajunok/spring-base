@@ -1,0 +1,25 @@
+一、案例说明：
+	1、案例采用@Primary(对应<bean>标签的primary="true"属性)和@Qualifier注解处理自动装配的歧义性（Ambiguity）。
+	2、案例采用@component注解+@Qualifier注解实现自定义限定符
+	3、案例在XML配置文件中使用了c命名空间
+	4、案例使用构造器注入方式
+	5、案例使用@ImportResource注解将XML配置文件中Bean导入
+二、源代码文件（.java）介绍：
+	【Student.java】：POJO，学生。
+	【Teacher.java】：POJO，教师。
+	【Course.java】：POJO，课程。
+			
+	【cook.java】：注解类，自定义限定符注解。
+	【Test.java】：测试类。使用ClassPathXmlApplicationContext类获取XML资源配置文件。
+	【TestQualifier.java】：测试类。用于测试自定义限定符注解@cook
+		1、该类使用了注解@RunWith(SpringJUnit4ClassRunner.class)和@Test注实现spring测试功能。
+		2、该类使用了注解@ContextConfiguration获取JavaConfig配置类。
+		3、该类使用了@Autowired、@Qualifier和@cook注解。	
+	【School.java】：JavaConfig配置类，（学校）。使用了@component、@Configuration和@ImportResource、@Autowired和@Qualifier注解。
+		1、该类使用了自定义限定符注解@cook。
+	【spring-autowiringAmbiguity.xml】：spring Bean XML配置文件。
+	 	1、该配置文件中使用了c和context命名空间；
+	    2、该配置文件中 使用了<context:annotation-config/>标签；
+	    3、在<bean>标签中使用了autowire="constructor"属性和 primary="true"属性。
+三、知识点：
+	1、@cook：自定义限定符注解。该注解定义中添加@Qualifier注解来实现自定义限定符功能。注入bean时通过@Autowired+@cook实现限定功能。

@@ -7,6 +7,10 @@
 	
 	【EmpService.java】：构造器注入类。通过@Autowired注解注入EmpDao
 	【Test.java】：案例调试类。使用ClassPathXmlApplicationContext类获取XML资源配置文件。
+	
+	【spring-autowiringAutowired.xml】：spring Bean XML配置文件。
+	 	1、该配置文件中使用了context命名空间；
+	    2、该配置文件中 使用了<context:annotation-config/>标签；	
 三、知识点：
 	1、@Autowired注解缺点：注解注入固然方便，但是也存在缺点，即被标注的属性或参数必须是可注入的。
 	      避免抛出异常，那么我们就可以在@Autowired中添加required属性，表示是否一定要进行装配

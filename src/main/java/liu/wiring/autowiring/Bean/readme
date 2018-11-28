@@ -1,0 +1,24 @@
+一、案例说明：
+	1、案例采用@Bean注解结合@Configuration和@Autowired俩个注解实现自动装配Bean。
+	2、案例没有使用XML配置
+	3、案例使用@Bean注解相关属性执行生命周期回调函数。
+二、源代码文件（.java）介绍：
+	【Member.java】：POJO,家庭成员。
+	【Family.java】：POJO，家庭
+	【BeanLifecycle.java】：POJO，bean生命周期回调方法测试类。任何使用@Bean定义的bean，也可以执行生命周期的回调函数，
+		类似@PostConstruct and @PreDestroy的方法。
+	
+	【JavaConfig.java】：JavaConfig配置类。该类使用了@Configuration、@Value、@Autowired、@Qualifier、
+		@Description和@Bean注解，另外@Bean注解使用了initMethod="beanInit"和destroyMethod="beanDestroy"属性。
+	
+	【Test.java】：案例调试类。
+		1、使用spring测试注解@RunWith(SpringJUnit4ClassRunner.class)和@org.junit.Test注解
+		2、使用注解@ContextConfiguration(classes=JavaConfig.class)获取JavaConfig配置类
+		3、使用了注解@Autowired和@Qualifier
+
+三、知识点：
+	1、@Bean：是一个方法级别上的注解，主要用在@Configuration注解的类里，也可以用在@Component注解的类里。添加的bean的id为方法名。
+	       另外使用@Bean注解的属性initMethod="beanInit"和destroyMethod="beanDestroy"在初始化和销毁时调用指定方法。
+	2、@Value：通过该注解将外部的值动态注入到Bean中。
+	3、@Description：使用该注解对bean进行详细描述。
+	4、@Qualifier：使用@Autowired注解结合该注解限定织入的bean。
