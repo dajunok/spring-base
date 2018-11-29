@@ -6,5 +6,13 @@ package liu.wiring.Importing;
  *
  */
 public class Grade {
+	private String gradeName;
+	
+	public Grade(String gradeName) {
+		this.gradeName=gradeName;
+	}
 
+	public String getName() {
+		return this.gradeName;
+	}
 }

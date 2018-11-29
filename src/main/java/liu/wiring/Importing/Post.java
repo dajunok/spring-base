@@ -11,5 +11,9 @@ public class Post {
 	public Post(String name) {
 		this.name=name;
 	}
+	
+	public String getName() {
+		return this.name;
+	}
 
 }

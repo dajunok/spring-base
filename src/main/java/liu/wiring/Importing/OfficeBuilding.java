@@ -1,6 +1,8 @@
 package liu.wiring.Importing;
 
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.ImportResource;
 
 /**
  * 办公楼
@@ -10,6 +12,8 @@ import org.springframework.context.annotation.Configuration;
  */
 
 @Configuration
+@Import({DepartmentConfig.class})
+@ImportResource(locations="classpath:/liu/wiring/Importing/spring-office.xml")
 public class OfficeBuilding {
 
 }
