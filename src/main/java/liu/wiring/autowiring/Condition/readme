@@ -1,0 +1,21 @@
+一、案例说明：
+	1、案例通过@Bean、@Conditional注解和实现Condition接口重写matches方法，达到满足条件时才创建对应的Bean。
+二、源代码文件（.java）介绍：
+	【Animal.java】：POJO，动物。
+	【Cat.java】：POJO，宠物猫，继承Animal类。
+	【Dog.java】：POJO，宠物狗，继承Animal类。
+	【Person.java】：POJO，人类，有Animal属性。该类使用@Autowired注解注入Animal实例。
+	
+	【PetCondition.java】：POJO,实现了Condition接口，用于实现创建Bean的条件。
+	
+	【BeanConfig.java】：JavaConfig配置类，结合@Bean注解的使用，主要用于定义Bean。
+		1、该类使用了@Configuration注解，把该类声明为JavaConfig配置类。
+		2、该类使用了@Check注解（自定义注解）
+		3、该类使用了@Bean注解，用于定义Bean。
+		4、该类使用了@Conditional注解，该注解配合Condition接口实现类PetCondition达到满足条件时才创建对应的Bean
+	
+	【Test.java】：案例调试类。该类使用AnnotationConfigApplicationContext对象获取BeanConfig类上下文。
+三、知识点：
+	1、@Conditional注解结合Condition接口实现类重写matches方法，判断要创建的Bean是否满足给定的条件。
+	      如果matches方法返回True则创建该Bean，否则不创建。
+	2、灵活运用matches方法传入的参数对象ConditionContext和AnnotatedTypeMetadata。

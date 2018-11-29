@@ -1,0 +1,7 @@
+一、案例说明：
+	1、案例在JavaConfig配置类中采用@Import注解导入其他配置类。
+	2、案例在JavaConfig配置类中采用@ImportResource注解导入XML配置文件。
+	3、案例在XML配置文件文件中采用<import resource="cd-config.xml"/>标签导入其他XML配置文件。
+	4、案例在XML配置文件文件中采用<bean class="xxx.javaConfig" />标签导入JavaConfig配置类
+二、源代码文件（.java）介绍：
+三、知识点：

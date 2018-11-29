@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd">
+			<!-- （职务）XML配置文件：用于创建与职务相关的bean -->
+	<bean id="director" class="liu.wiring.Importing.Post" c:_="主管"/>
+	<bean id="manager" class="liu.wiring.Importing.Post" c:_="经理"/>
+	<bean id="generalManager" class="liu.wiring.Importing.Post" c:_="总经理"/>
+	<bean id="clerksgeneral" class="liu.wiring.Importing.Post" c:_="普通职员"/>
+</beans>

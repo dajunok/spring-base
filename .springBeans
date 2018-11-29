@@ -9,6 +9,9 @@
 	<configs>
 		<config>src/main/java/liu/wiring/spring-wiringcd.xml</config>
 		<config>src/main/java/liu/wiring/autowiring/Ambiguity/spring-autowiringAmbiguity.xml</config>
+		<config>src/main/java/liu/wiring/autowiring/beanScope/spring-autowiringScope.xml</config>
+		<config>src/main/java/liu/wiring/Importing/spring-office.xml</config>
+		<config>src/main/java/liu/wiring/Importing/spring-Post.xml</config>
 	</configs>
 	<autoconfigs>
 	</autoconfigs>

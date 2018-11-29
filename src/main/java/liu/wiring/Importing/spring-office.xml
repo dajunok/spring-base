@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd">
+	
+					<!-- （办公室）XML配置文件：用于创建与办公室相关的bean -->	
+	<bean id="financeOffice" class="liu.wiring.Importing.Office" c:_="财务办公室"/>
+	<bean id="etmOffice" class="liu.wiring.Importing.Office" c:_="ETM办公室"/>
+	<bean id="technologyOffice" class="liu.wiring.Importing.Office" c:_="技术部办公室"/>
+	<bean id="generaManagerOffice" class="liu.wiring.Importing.Office" c:_="总经办"/> 
+
+</beans>

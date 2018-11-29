@@ -1,0 +1,35 @@
+一、案例说明：（Bean的作用域）
+	1、案例采用@Scope注解处理Bean的作用域问题。
+	2、案例采用@Scope注解处理Bean的作用域代理模式
+	3、案例采用XML配置<bean>标签中的scope="singleton"属性和
+	      子标签<aop:scoped-proxy proxy-target-class="false">处理作用域和作用域代理模式。
+二、源代码文件（.java）介绍：
+	【Cart.java】：POJO，购物车。
+		1、该类使用了@Component注解，被声明为一个Bean，被@Component注解声明的bean需要使用@ComponentScan()注解才能激活。
+		2、该类使用了@Scope注解，用于处理Bean的作用域和作用域代理模式。
+	【Product.java】：POJO，产品。
+	
+	【BenConfig.java】：JavaConfig配置类。
+		1、该类使用了@Configuration注解，表明该类是一个JavaConfig配置类，主要用于定义bean。
+		2、该类使用了@ComponentScan注解，用于激活@Component注解声明的Bean。
+		3、该类使用了@ImportResource注解，用于导入XML配置文件，XML配置文件主要用于定义bean和JavaConfig配置类功能相同。
+	
+	【Test.java】：案例调试类。使用AnnotationConfigApplicationContext类获取JavaConfig配置类。
+	
+	【spring-autowiringScope.xml】：XML配置文件。主要用于定义Bean
+		1、<bean>标签中的scope="singleton"属性用于指定Bean的作用域，此处为单实例"singleton"。
+		2、<bean>标签中的字标签<aop:scoped-proxy proxy-target-class="true"/>
+		       用于指定Bean的作用域代理模式。此处适用于cglib动态代理模式。
+	
+三、知识点：
+	1、bean的作用域：在默认情况下， Spring应用上下文中所有bean都是作为以单例（ singleton） 的形式创建的。 也就是说， 
+	      不管给定的一个bean被注入到其他bean多少次， 每次所注入的都是同一个实例。
+	  Spring定义了多种作用域， 可以基于这些作用域创建bean， 包括：
+	  	●单例（ "singleton"） ： 在整个应用中， 只创建bean的一个实例。
+	  	●原型（ "prototype"） ： 每次注入或者通过Spring应用上下文获取的时候 都会创建一个新的bean实。
+	  	●会话（ "session"） ： 在Web应用中， 为每个会话创建一个bean实例。
+	  	●请求（ "request"） ： 在Web应用中， 为每个请求创建一个bean实例
+	2、bean的作用域代理模式：
+		●ScopedProxyMode.TARGET_CLASS  ：适应于Cglib动态代理
+		●ScopedProxyMode.INTERFACES	：适应于JDK动态代理，需要使用接口	  	
+		
