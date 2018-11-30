@@ -4,4 +4,56 @@
 	3、案例在XML配置文件文件中采用<import resource="cd-config.xml"/>标签导入其他XML配置文件。
 	4、案例在XML配置文件文件中采用<bean class="xxx.javaConfig" />标签导入JavaConfig配置类
 二、源代码文件（.java）介绍：
+	【Department.java】：POJO，（部门）。
+	【Employee.java】：POJO，（职员）
+	【Grade.java】：POJO，（工资级别）
+	【Office.java】：POJO，（办公室）
+	【Post.java】：POJO，（职务）
+	
+	【DepartmentConfig.java】：部门配置类，用于定义与部门相关的Bean。
+		1、该类使用了@Configuration注解，表明它是一个配置类。
+		2、该类使用了注解@Import({EmployeeConfig.class})导入职员配置类（EmployeeConfig）
+		3、该类使用了@Bean注解，用于定义与部门相关的bean。
+	【EmployeeConfig.java】：职员配置类，用于定义与部门相关的Bean。
+		1、该类使用了@Configuration注解，表明它是一个配置类。
+		2、该类使用了@Bean注解，用于定义与职员相关的bean。
+		3、该类使用了@Autowired注解，用来注入依赖bean。
+		4、该类使用了@Qualifier注解，用于指定义特定bean，以免@Autowired注解注入时产生歧义。
+	【GradeConfig.java】：工资级别配置类，用于定义与部门相关的Bean。
+		1、该类使用了@Configuration注解，表明它是一个配置类。
+		2、该类使用了@Bean注解，用于定义与级别相关的bean。
+		3、该类使用了@Value注解，用于注入字面值。配合@Bean注解使用，可用于Bean定义时的字面值依赖。
+	【OfficeBuilding.java】：办公楼配置类，用于汇总所有配置文件（包括配置类、XML配置文件）。
+		1、该类使用了@Configuration注解，表明它是一个配置类。
+		2、该类使用了注解@Import({DepartmentConfig.class})导入部门配置类（DepartmentConfig）。
+		3、该类使用了注解@ImportResource(locations="classpath:/liu/wiring/Importing/spring-office.xml")导入XML配置文件（spring-office.xml）。
+	
+	【spring-office.xml】：XML配置文件,主要用于定义Bean。
+		1、该配置文件使用了<import resource="spring-Post.xml"/>标签，导入另外的XML配置文件(spring-Post.xml)。
+		2、该配置文件使用了<bean class="liu.wiring.Importing.GradeConfig"/>标签，导入JavaConfig配置类（GradeConfig）。
+		3、该配置文件使用了c命名空间。
+	【spring-Post.xml】：XML配置文件,主要用于定义Bean。
+		1、该配置文件使用了c命名空间。
+		
+	【Test.java】：案例调试类。
+		1、使用spring测试注解@RunWith(SpringJUnit4ClassRunner.class)和@org.junit.Test注解
+		2、使用注解@ContextConfiguration(classes={OfficeBuilding.class})获取JavaConfig配置类
+		3、使用了注解@Autowired和@Qualifier				
+		
+	
 三、知识点：
+	1、综合运用JavaCongfig配置和XML配置文件，灵活的处理Bean的定义和织入。
+	2、EmployeeConfig类综合集中的运用了Spring Bean定义和织入。
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

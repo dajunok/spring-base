@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+					<!-- 订单配置文件： 创建与订单相关的bean-->
+	<!--  <bean class="liu.wiring.noAutowiring.GoodsConfig"/>-->
+	<bean id="G-Apple" class="liu.wiring.noAutowiring.Goods"
+	       c:_0="苹果"
+	       c:_1="斤"
+	       c:_2="8.50"
+	       c:_3="水果"/>
+	
+	<bean id="order0001" class="liu.wiring.noAutowiring.OrderForm"
+		  c:_0="0001"
+		  c:_1="1">
+		  <constructor-arg name="goodslist">
+			<list>
+				<ref bean="G-Apple"/>
+			</list>
+			<!-- ddd -->
+		  </constructor-arg>
+	</bean>					
+
+</beans>

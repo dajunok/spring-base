@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id="p-zhangsSan" class="liu.wiring.noAutowiring.Personnel">
+		<constructor-arg name="name" value="张三"/>
+		<constructor-arg name="post" value="销售员"/>
+		<constructor-arg name="status" value="在职"/>
+		<constructor-arg name="score">
+			<map>
+				<entry key="迟到" value="-10"/>
+				<entry key="与顾客争吵" value="-30"/>
+			</map>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="p-liSi" class="liu.wiring.noAutowiring.Personnel"
+	    c:_0="李四"
+	    c:_1="收银员"
+	    c:_2="在职">
+		<constructor-arg name="score">
+			<map>
+				<entry key="迟到" value="-30"/>
+				<entry key="与同事打架" value="-15"/>
+				<!-- 需在此标签处添加一行注释，否则与c命名空间混用时会报错。（原因不明） -->
+			</map>
+		</constructor-arg>
+	</bean>
+
+</beans>

@@ -13,12 +13,12 @@ import org.springframework.context.annotation.Import;
 @Configuration
 @Import({EmployeeConfig.class})
 public class DepartmentConfig {
-	@Bean("financeDepartment")
-	public Department depFinance() {return new Department("financeDepartment");}
+	@Bean("financeDepartment")   //财务部
+	public Department depFinance() {return new Department("财务部");}
 	
-	@Bean("etmDepartment")
-	public Department depEtm() {return new Department("etmDepartment");}
+	@Bean("etmDepartment")  //ETM部
+	public Department depEtm() {return new Department("ETM部");}
 	
-	@Bean("technologyDepartment")
-	public Department depTechnology() {return new Department("technologyDepartment");}
+	@Bean("technologyDepartment")  //技术部
+	public Department depTechnology() {return new Department("技术部");}
 }

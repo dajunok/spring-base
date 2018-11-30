@@ -12,6 +12,9 @@
 		<config>src/main/java/liu/wiring/autowiring/beanScope/spring-autowiringScope.xml</config>
 		<config>src/main/java/liu/wiring/Importing/spring-office.xml</config>
 		<config>src/main/java/liu/wiring/Importing/spring-Post.xml</config>
+		<config>src/main/java/liu/wiring/noAutowiring/spring-personnel.xml</config>
+		<config>src/main/java/liu/wiring/noAutowiring/spring-Area.xml</config>
+		<config>src/main/java/liu/wiring/noAutowiring/spring-orderForm.xml</config>
 	</configs>
 	<autoconfigs>
 	</autoconfigs>

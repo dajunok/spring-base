@@ -2,6 +2,7 @@
 	1、案例采用@Bean注解结合@Configuration和@Autowired俩个注解实现自动装配Bean。
 	2、案例没有使用XML配置
 	3、案例使用@Bean注解相关属性执行生命周期回调函数。
+	4、可以通过@Autowired注解先注入其他Bean实例，再使用@Bean注解创建Bean时引入其他依赖的bean。
 二、源代码文件（.java）介绍：
 	【Member.java】：POJO,家庭成员。
 	【Family.java】：POJO，家庭

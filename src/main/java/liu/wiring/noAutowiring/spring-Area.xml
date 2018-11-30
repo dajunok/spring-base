@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+		<!-- 区域XML配置文件采用settor装配  对应类【liu.wiring.noAutowiring.Area】-->
+	
+	<!-- 导入spring-personnel.xml配置文件 -->
+	<import resource="spring-personnel.xml"/> 
+	
+	<bean id="a-clothing" class="liu.wiring.noAutowiring.Area">  
+		<property name="charge" ref="p-zhangsSan"/> <!-- 引用 spring-personnel.xml配置文件中的Bean id-->
+		<property name="name" value="服装区"/>
+		<property name="floor" value="三楼"/>
+		<property name="position" value="入口右边"/>
+	</bean>
+	
+	<bean id="a-driedFood" class="liu.wiring.noAutowiring.Area">  
+		<property name="charge" ref="p-zhangsSan"/> <!-- 引用 spring-personnel.xml配置文件中的Bean id-->
+		<property name="name" value="干货区"/>
+		<property name="floor" value="二楼"/>
+		<property name="position" value="西北角"/>
+	</bean>
+	
+	<!-- 采用p命名空间 注入-->
+	<bean id="a-fruitsVegetables" class="liu.wiring.noAutowiring.Area"
+		  p:charge-ref="p-zhangsSan" 
+		  p:name="水果蔬菜区"
+		  p:floor="二楼"
+		  p:position="东南角"/>  
+
+
+</beans>

@@ -28,9 +28,9 @@ public class JavaConfig {
 		return new Family();
 	}
 	
-	@Bean(name= {"gf","gfam","fly"})
+	@Bean(name= {"gf","gfam","fly"}) //定义多个别名
 	public Family goodFamily() {
-		return new Family(member);
+		return new Family(member);  //引入上面注入的bean实例member
 	}
 		
 	@Bean(name="myfriend")
