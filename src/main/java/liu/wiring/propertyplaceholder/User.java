@@ -6,9 +6,9 @@ package liu.wiring.propertyplaceholder;
  *
  */
 public class User {
-	private String userName;
-    private int userAge;
-    private Role role;
+	private String userName;  //用户名
+    private int userAge;   //用户年龄
+    private Role role;     //角色
  
     public String getUserName() {
         return userName;

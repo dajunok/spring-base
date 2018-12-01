@@ -1,0 +1,18 @@
+一、案例说明：
+	1、案例结合@PropertySource注解和注入Environment实例（Bean），实现读取外部属性文件的功能。
+	2、案例结合@PropertySource注解和@Value，实现读取外部属性文件的功能。
+二、源代码文件（.java）介绍：
+	【Book.java】：POJO，书籍。
+	
+	【PropertySourceConfig.java】：属性源配置类。主要用于定义Bean。
+		1、该类使用了@Configuration注解，表明它是一个配置类。
+		2、该类使用了@PropertySource注解，通过该注解让系统把属性配置文件加载到Environment中。
+		      通过Environment的getProperty方法获取属性值。
+		3、该类使用了@Value注解，通过该注解读取Environment中的外部属性文件中的属性值。
+		
+	【Test.java】：案例调试类。
+		1、使用AnnotationConfigApplicationContext类获取配置类PropertySourceConfig。
+		
+	【TestProperty.java】：应用类。使用它创建外部属性文件（book.properties和otherBook.properties）。
+	【book.properties】和【otherBook.properties】：外部属性文件。
+三、知识点：

@@ -6,8 +6,8 @@ package liu.wiring.propertyplaceholder;
  *
  */
 public class Role {
-	private String roleName;
-    private String roleCode;
+	private String roleName;  //角色名
+    private String roleCode;  //角色代码
  
     public String getRoleName() {
         return roleName;
