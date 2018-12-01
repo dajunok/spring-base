@@ -8,9 +8,10 @@ import java.util.List;
  *
  */
 public class OrderForm {
-	public String orderID;         //订单ID	
-	public int status;  //订单状态
-	public List<Goods> goodslist;  //商品列表
+	private String orderID;         //订单ID	
+	private int status;  //订单状态
+	private List<Goods> goodslist;  //商品列表
+	
 	
 	public OrderForm(String orderID, int status,List<Goods> goodslist) {
 		super();

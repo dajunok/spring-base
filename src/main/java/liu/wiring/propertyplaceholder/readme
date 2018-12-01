@@ -1,0 +1,47 @@
+一、案例说明：
+	1、案例采用属性占位符读取外部属性文件。
+二、源代码文件（.java）介绍：
+	【DataSource.java】：POJO，数据库数据源。
+	【Role.java】：POJO，用户角色
+	【User.java】：POJO，用户
+	
+	【PlaceholderConfig.java】：占位符配置类。用于定义bean。
+		1、在该类中创建了属性占位符对应的Bean。
+	
+	【GenerateProperty.java】：应用类，用于创建属性文件。
+	【Test.java】：案例调试类。
+		1、使用AnnotationConfigApplicationContext上下文类获取配置类PlaceholderConfig中的bean。
+	【spring-nojavaconfig.xml】：XML配置文件,主要用于定义Bean。
+		1、该配置文件使用了<context:property-placeholder>标签，让系统自动生成属性占位符对应的Bean。
+	
+	【db.properties】：外部属性文件。
+	【placeholder.properties】：外部属性文件
+三、知识点：
+	1、属性占位符的用法：
+		（方法1）、在配置类PlaceholderConfig中创建一个bean，将属性占位符注入Bean容器中。
+			@Bean 
+			public PropertySourcesPlaceholderConfigurer getPropertyPlaceholderConfigurer() {
+			PropertySourcesPlaceholderConfigurer propertyPlaceholder = new PropertySourcesPlaceholderConfigurer();
+			ClassPathResource classPathResource = new ClassPathResource("/liu/wiring/propertyplaceholder/placeholder.properties");
+			ClassPathResource classPathResource2= new ClassPathResource("/liu/wiring/propertyplaceholder/db.properties");
+			propertyPlaceholder.setLocations(classPathResource,classPathResource2);
+			propertyPlaceholder.setLocalOverride(true);
+			return propertyPlaceholder;
+		（方法2）、在XML配置文件中创建一个bean，将属性占位符注入Bean容器中。
+			<bean id="propertyConfigurer"  class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+				<property name="location" value="/liu/wiring/propertyplaceholder/db.properties"/>
+			</bean>
+		（方法3）、在XML配置文件中<context:property-placeholder>标签，将属性占位符注入Bean容器中。	
+			<context:property-placeholder 
+				location="classpath:/liu/PropertyPlaceholder/db.properties,
+						            /liu/PropertyPlaceholder/placeholder.properties"/>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
