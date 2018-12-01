@@ -1,0 +1,64 @@
+一、案例说明：
+	1、案例综合采用Settor和constructor构造器注入方式。
+	2、案例在XML配置中使用了较复杂的对象列表注入（list<Goods>）和Map对象注入。
+	3、案例在XML配置中采用了c命名空间与<constructor-arg>标签混合构造器配置方式。
+	4、案例在XML配置中采用了p命名空间与<property name="name" value="服装区"/>标签混合settor配置方式
+二、源代码文件（.java）介绍：
+	【Area.java】：POJO，区域。采用set方法初始化，适用于XML配置settor注入方式。
+	【Customer.java】：POJO，顾客。采用构造器初始化，适用于XML配置构造器注入方式。
+	【Goods.java】：POJO，商品。采用构造器初始化，适用于XML配置构造器注入方式。
+	【OrderForm.java.java】：POJO，订单。采用构造器初始化，适用于XML配置构造器注入方式。
+	【Personnel.java】：POJO，职员。采用构造器初始化，适用于XML配置构造器注入方式。
+	【ShoppingCart.java】：POJO，购物车。采用构造器初始化，适用于XML配置构造器注入方式。
+	
+	【CustomerConfig.java】：顾客配置类。用于定义与顾客相关的bean。
+		1、该类使用了@Configuration注解，表明它是一个配置类。
+		2、该类使用了@Bean注解，用于定义与职员相关的bean。
+	【ShoppingGartConfig.java】：购物车配置类。用于定义与购物车相关的bean.
+		1、该类使用了@Configuration注解，表明它是一个配置类。
+		2、该类使用了@Bean注解，用于定义与职员相关的bean。
+		3、该类使用了@Autowired注解，用来注入依赖bean。
+		4、该类使用了@Qualifier注解，用于指定义特定bean，以免@Autowired注解注入时产生歧义。
+		5、该类使用列表List<Goods>注入依赖bean列表。
+	
+	【spring-Area.xml】：XML配置文件,主要用于定义Bean。
+		1、该配置文件采用settor注入方式装配bean。
+		2、该配置文件使用了p命名空间。
+	【spring-goods.xml】：XML配置文件,主要用于定义Bean。
+		1、该配置文件采用Constructor构造器注入方式装配bean。
+		2、该配置文件使用了c命名空间。
+	【spring-orderForm.xml】：XML配置文件,主要用于定义Bean。
+		1、该配置文件采用Constructor构造器注入方式装配bean。
+		2、该配置文件使用了c命名空间。
+		3、该配置文件使用了<import resource="spring-goods.xml"/>标签，导入另外的XML配置文件(spring-goods.xml)。
+		4、该配置文件使用了<list>标签注入bean对象列表。
+	【spring-personnel.xml】：XML配置文件,主要用于定义Bean。
+		1、该配置文件采用Constructor构造器注入方式装配bean。
+		2、该配置文件使用了c命名空间。
+		3、该配置文件使用了<map>标签。
+	
+	【Test.java】：案例调试类。
+		1、使用ClassPathXmlApplicationContext类获取XML资源配置文件。
+		2、使用AnnotationConfigApplicationContext类获取JavaConfig配置类。
+	【TestMarket.java】：案例调试类。
+	
+三、知识点：
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

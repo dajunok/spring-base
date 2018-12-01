@@ -1,6 +1,9 @@
 package liu.wiring.noAutowiring;
 
+import java.util.List;
+
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class Test {
@@ -9,10 +12,18 @@ public class Test {
 		ApplicationContext context=new ClassPathXmlApplicationContext("classpath:/liu/wiring/noAutowiring/spring-orderForm.xml");
 		OrderForm order=(OrderForm)context.getBean("order0001");
 
-		for(Goods g:order.goodslist) {
-			System.out.println(g.getName());
+		System.out.println("【水果清单】");
+		for(Goods g:order.getGoodslist()) {
+			System.out.println("    "+g.getName());		
 		}
-	
+		
+		context=new AnnotationConfigApplicationContext(ShoppingGartConfig.class);
+		ShoppingCart cart=(ShoppingCart)context.getBean("shop-001");
+		List<Goods> goodses=cart.getGoodsList();
+		for(Goods g:goodses) {
+			System.out.println(g.getName()+"   "+g.getPrice()+"/"+g.getUnit()+"   "+g.getKind());
+		}
+		
 	}
 
 }

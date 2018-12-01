@@ -5,22 +5,19 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 	
 					<!-- 订单配置文件： 创建与订单相关的bean-->
-	<!--  <bean class="liu.wiring.noAutowiring.GoodsConfig"/>-->
-	<bean id="G-Apple" class="liu.wiring.noAutowiring.Goods"
-	       c:_0="苹果"
-	       c:_1="斤"
-	       c:_2="8.50"
-	       c:_3="水果"/>
-	
+	<import resource="spring-goods.xml"/>
+							
 	<bean id="order0001" class="liu.wiring.noAutowiring.OrderForm"
 		  c:_0="0001"
 		  c:_1="1">
 		  <constructor-arg name="goodslist">
 			<list>
-				<ref bean="G-Apple"/>
+				<ref bean="G-Apple"/> 	<!-- 引用spring-goods.xml配置文件中的bean -->
+				<ref bean="G-Pear"/>	<!-- 引用spring-goods.xml配置文件中的bean -->
+				<ref bean="G-Banana"/>	<!-- 引用spring-goods.xml配置文件中的bean -->
 			</list>
-			<!-- ddd -->
+			<!-- 需在此标签处添加一行注释，否则与c命名空间混用时会报错。（原因不明） -->
 		  </constructor-arg>
-	</bean>					
-
+	</bean>		
+	
 </beans>
