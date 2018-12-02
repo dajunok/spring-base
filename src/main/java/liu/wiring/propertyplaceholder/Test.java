@@ -1,4 +1,4 @@
-package liu.wiring.propertyplaceholder;
+package liu.wiring.propertyPlaceholder;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 

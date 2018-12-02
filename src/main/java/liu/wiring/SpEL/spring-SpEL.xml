@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+			     http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<import resource="spring-Book.xml"/>  <!-- 导入 spring-Book.xml配置文件-->
+	
+	<bean id="spel001" class="liu.wiring.SpEL.SpringExpressionLanguage">
+		<property name="page" value="#{123456}"/>     <!-- 引用字面值 -->
+		<property name="time" value="#{T(System).currentTimeMillis()}"/>    <!-- 引用java.lang.System对象中的方法 currentTimeMillis()-->
+		<property name="name" value="#{'ZhangSan'.toLowerCase()}"/>  <!-- 引用字符串对象方法 toLowerCase()-->
+		<property name="intList">
+			<!-- 定义列表intList -->
+			<list>
+				<value>100</value>
+				<value>200</value>
+				<value>300</value>
+			</list>
+		</property>
+		<property name="strArry">
+			<!-- 定义数组 strArry-->
+			<array>
+				<value>harvest</value>
+				<value>extensive </value>
+				<value>bumper </value>
+			</array>
+		</property>
+		<property name="strMap">
+			<!-- 定义Map映射strMap-->
+			<map>
+				<entry key="zhangsan" value="张三"/>
+				<entry key="liSi" value="李四"/>
+				<entry key="wangwu" value="王五"/>
+			</map>
+		</property>
+		<property name="book" ref="book001"/> 		<!-- 引用导入的XML配置文件中的Bean -->
+	</bean>
+	
+	<!--Bean id"spel002" 全部引用Bean id"spel001" -->
+	<bean id="spel002" class="liu.wiring.SpEL.SpringExpressionLanguage">
+		<property name="page" value="#{spel001.page}"/>
+		<property name="time" value="#{spel001.time}"/>
+		<property name="name" value="#{spel001.name}"/>
+		<property name="intList" value="#{spel001.intList}"/>
+		<property name="strArry" value="#{spel001.strArry}"/>
+		<property name="strMap" value="#{spel001.strMap}"/>
+		<property name="book" ref="book002"/>
+	</bean>
+
+	<bean id="srf" class="liu.wiring.SpEL.SpringRef">
+		<property name="str" value="#{spel001.strArry[1]}"/>  <!-- 引用数组值[1] -->
+		<property name="i" value="#{spel001.page}"/>          <!-- 引用对象属性 -->
+		<property name="book" value="#{spel001.book}"/>       <!-- 引用对象属性 -->
+	</bean>
+	
+	<bean id="srf01" class="liu.wiring.SpEL.SpringRef">
+		<property name="str" value="#{spel002.strMap.get('liSi')}"/>  <!-- 引用Map的key('liSi')值 -->
+		<property name="i" value="#{spel001.intList.get(0)}"/>          <!-- 引用列表list值 -->
+		<property name="book" value="#{spel002.book}"/>       <!-- 引用对象属性 -->
+	</bean>
+</beans>

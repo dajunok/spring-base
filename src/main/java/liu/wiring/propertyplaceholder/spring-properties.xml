@@ -8,11 +8,13 @@
                http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
                http://www.springframework.org/schema/context
 						http://www.springframework.org/schema/context/spring-context-4.2.xsd">
- 	<!--旧式样板
- 		<bean id="propertyConfigurer"  class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-			<property name="location" value="/liu/PropertyPlaceholder/db.properties"/>
-		</bean>-->
-	<!--新样式全部参数
+	<!-- 创建属性占位符Bean (定义Bean的形式创建属性占位符Bean)
+    <bean id="propertyConfigurer"  class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+			<property name="location" value="/liu/wiring/propertyPlaceholder/db.properties"/>
+			<property name="location" value="/liu/wiring/propertyPlaceholder/placeholder.properties"/>
+	</bean>-->
+	
+	<!--<context:property-placeholder>标签完整参数：
 		<context:property-placeholder   
 	        location="属性文件，多个之间逗号（,）分隔"  
 	        file-encoding="文件编码"  
@@ -24,9 +26,11 @@
 	        order="顺序，当配置多个<context:property-placeholder/>时的查找顺序"  
         />-->
     
-	<!--<context:property-placeholder location="classpath:/liu/PropertyPlaceholder/db.properties,/liu/PropertyPlaceholder/placeholder.properties"/>-->
+    <!-- 使用<context:property-placeholder>标签使用自动创建属性占位符Bean -->
+	<context:property-placeholder location="classpath:/liu/wiring/propertyPlaceholder/db.properties,
+			/liu/wiring/propertyPlaceholder/placeholder.properties"/>
 	
-	<bean id="dataSource" class="liu.wiring.propertyplaceholder.DataSource">
+	<bean id="dataSource" class="liu.wiring.propertyPlaceholder.DataSource">
         <property name="driveClass" value="${driveClass}" />
         <property name="url" value="${url}" />
         <property name="userName" value="${userName}" />

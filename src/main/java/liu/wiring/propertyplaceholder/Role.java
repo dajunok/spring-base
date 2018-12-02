@@ -1,4 +1,4 @@
-package liu.wiring.propertyplaceholder;
+package liu.wiring.propertyPlaceholder;
 
 /**
  * 用户角色

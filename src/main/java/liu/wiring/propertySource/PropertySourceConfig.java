@@ -12,8 +12,9 @@ import org.springframework.core.env.Environment;
  *
  */
 @Configuration
-@PropertySource(value= {"classpath:/liu/wiring/propertySource/book.properties",
-						"classpath:/liu/wiring/propertySource/otherBook.properties"},
+@PropertySource(value= {"classpath:/liu/wiring/propertySource/otherBook.properties",
+						"classpath:/liu/wiring/propertySource/book.properties"
+						},
 				ignoreResourceNotFound=false,encoding="UTF-8",name="book.properties")
 public class PropertySourceConfig {
 	@Autowired

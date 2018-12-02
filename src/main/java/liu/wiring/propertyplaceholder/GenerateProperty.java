@@ -1,4 +1,4 @@
-package liu.wiring.propertyplaceholder;
+package liu.wiring.propertyPlaceholder;
 
 import java.io.FileOutputStream;
 import java.io.IOException;

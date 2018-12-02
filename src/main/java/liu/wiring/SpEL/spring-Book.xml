@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+						http://www.springframework.org/schema/beans/spring-beans.xsd
+						http://www.springframework.org/schema/aop
+						http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+	
+			<!-- Spring 表达式语言在XML配置文件中的应用 -->
+	
+	<!--<bean id="book001" class="liu.wiring.SpEL.Book">
+		<property name="bookName" value="Spring实战"/>
+		<property name="copyright" value="人民邮政出版社出版"/>
+		<property name="author" value="Craig Walls"/>
+		<property name="page" value="312"/>
+	</bean>
+	
+	<bean id="book002" class="liu.wiring.SpEL.Book">
+		<property name="bookName" value="Java Web"/>
+		<property name="copyright" value="#{book001.copyright}"/>
+		<property name="author" value="张志锋"/>
+		<property name="page" value="875"/>
+	</bean> -->
+	
+	<bean id="book001" class="liu.wiring.SpEL.Book"
+		c:_0="#{'Spring实战'}"
+		c:_1="人民邮政出版社出版"
+		c:_2="#{'Craig Walls'}"
+		c:_3="#{312}"/>
+	
+	<!-- 使用SpEL调用String的toUpperCase()方法；以及使用SpEL引用其它bean的属性值-->
+	<bean id="book002" class="liu.wiring.SpEL.Book"
+		c:_0="#{'Java Web'.toUpperCase()}"  
+		c:_1="#{book001.copyright}"         
+		c:_2="#{'张志锋'}"
+		c:_3="#{875}"/>
+
+</beans>

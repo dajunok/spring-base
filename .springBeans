@@ -16,6 +16,8 @@
 		<config>src/main/java/liu/wiring/noAutowiring/spring-Area.xml</config>
 		<config>src/main/java/liu/wiring/noAutowiring/spring-orderForm.xml</config>
 		<config>src/main/java/liu/wiring/noAutowiring/spring-goods.xml</config>
+		<config>src/main/java/liu/wiring/SpEL/spring-Book.xml</config>
+		<config>src/main/java/liu/wiring/SpEL/spring-SpEL.xml</config>
 	</configs>
 	<autoconfigs>
 	</autoconfigs>
