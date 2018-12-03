@@ -9,6 +9,7 @@ public class CheckOrderImp implements CheckOrder{
 
 	@Override
 	public void check() {
+		System.out.println("检查订单！");
 				
 	}
 

@@ -15,8 +15,8 @@
 	【CDConfig.java】：类，Bean装配配置文件（Java显示配置方式<JavaConfig>）
 	【CDPlayerConfig.java】：类，Bean装配配置文件（Java显示配置方式<JavaConfig>），该配置类使用@Importdao注解导入了【CDConfig.java】配置类。
 	【SoundSystemConfig.java]：类，Bean装配配置文件（Java显示配置方式<JavaConfig>），
-			该配置类使用@ImportResource注解导入了【spring-wiringcd.xml】配置文件，
-			并且使用@Import注解导入【CDPlayerConfig】配置类
+			1、该配置类使用@ImportResource注解导入了【spring-wiringcd.xml】配置文件，
+			2、并且使用@Import注解导入【CDPlayerConfig】配置类
 	
 	【CDPlayerTest】：类，用于测试和调试案例。该类使用@Autowired注解、@Qualifier注解、@RunWith、@ContextConfiguration和@Test注解。
 

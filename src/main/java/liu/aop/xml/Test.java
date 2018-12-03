@@ -15,8 +15,14 @@ public class Test {
 		System.out.println("\n//带参数调用----------------------------------");
 		order.pay("张三","发达路百强村富豪别墅18栋1806室"); //调用目标bean方法（其实真正调用的是代理bean方法）
 		
+		//通过AOP引用功能把CheckOrderImp类定义为目标类的父类，使用时将目标bean转换为CheckOrder接口类型，然后调用CheckOrder接口实现类CheckOrderImp的check()方法。
+		System.out.println("\n//AOP引用功能测试----------------------------------");
+		CheckOrder checkOrder=(CheckOrder)order;
+		checkOrder.check();
+		
 		System.out.println("\n//AspectJ异常通知测试----------------------------------");
 		order.pay("张三",46); //调用目标bean方法（其实真正调用的是代理bean方法）
+		
 		
 		
 		

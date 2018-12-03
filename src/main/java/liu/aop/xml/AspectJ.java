@@ -41,7 +41,7 @@ public class AspectJ {
 	}
 	
 	//异常通知对应方法
-	public void oderAfterThrowing(Object customer,Object age,Object exception) {
+	public void oderAfterThrowing(Object customer,Object age,Object exception) {  
 		System.out.println("调用代理类方法：oderAfterThrowing()");
 		System.out.println("订单出错！！");
 	}

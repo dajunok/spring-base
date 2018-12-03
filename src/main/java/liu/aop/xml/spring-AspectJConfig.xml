@@ -58,6 +58,12 @@
 				arg-names="customer,age,exception"
 				throwing="exception"
 				pointcut="execution(public double liu.aop.xml.Order.pay(..)) and args(customer,age)"/>			
+		
+			<!-- 指定目标类（订单Order）的代理类的父类，用于增强目标代理类的功能，即目标Bean可以直接调用default-impl属性指定类中的方法 -->
+			<aop:declare-parents 
+				types-matching="liu.aop.xml.Order+" 
+				implement-interface="liu.aop.xml.CheckOrder"
+				default-impl="liu.aop.xml.CheckOrderImp"/>
 		</aop:aspect>
 	</aop:config>
 	

@@ -1,0 +1,45 @@
+一、案例说明：
+	1、案例完全采用XML配置文件实现AOP功能。其中主要用到<aop:config>标签配置AOP中的切面（Aspect）、通知（Advice）
+	      和切点（pointcut）表达式。
+二、源代码文件（.java）介绍：
+	【Order.java】：POJO，（订单），目标类。
+	【OrderException.java】：POJO，（订单异常），自定义异常类，用于测试AOP异常通知。
+	【CheckOrder.java】：接口，增强功能接口。用于测试AOP引用。
+	【CheckOrderImp.java】：POJO，增强功能接口实现类，用于测试AOP引用。
+	
+	【AspectJ.java】：切面通知方法实现类。用于定义通知方法（XML配置<aop:config>标签的子标签（如：<aop:before>标签中的method属性指定的方法））
+	【Test.java】：案例调试类。
+		1、使用ClassPathXmlApplicationContext类获取XML资源配置文件。
+		
+	【spring-AspectJConfig.xml】：XML配置类。用于定义、目标Bean、切面Bean和AOP配置。主要用于AOP配置。
+		1、该配置文件使用了<bean id="aspectJ" class="liu.aop.xml.AspectJ"/> 标签定义切面Bean，id="aspectJ"
+		2、该配置文件使用了<aop:config>标签，该标签是AOP配置的顶级标签。
+		3、该配置文件使用了<aop:config>标签子标签<aop:aspect ref="aspectJ">，引用切面bean，id="aspectJ"。
+		4、该配置文件在各通知标签的子标签中通过属性method="xxx"指定通知方法，对应AspectJ类中的方法。
+		5、该配置文件使用了<aop:pointcut>标签，用于单独定义切点表达式，可以被各通知中的pointcut-ref属性引用（指定切点id）。
+三、知识点：
+	1、切面定义必须依托一个Bean（Aspect类），通过该bean（Aspect类）实现对应的通知方法。
+	2、案例中的切点表达式分析：
+		"execution(public String liu.aop.xml.Order.pay(..)) and args(customer,address)
+	   
+		【execution】：AspectJ指示器，用于匹配目标bean的方法（即满足表达式的目标bean方法执行时将触发对应通知方法的执行）。
+		【args(customer,address)】：AspectJ指示器，即满足表达式的目标bean方法参数个数时将触发对应通知方法的执行，
+			同时按顺序将目标方法参数值传递个customer和address两个对象。并且注意customer和address必须和
+			属性arg-names="customer,address"中两个参数名称一致。而且Aspect类中对应通知方法的参数个数
+			必须与arg-names属性中参数个数和参数类型相同（或者是父类类型，为避免转换出错一般采用顶级类型Object）。
+	3、<aop:config>标签：AOP配置的顶级标签。
+	4、<aop:aspect ref="aspectJ">标签：用于指定切面bean，其中"aspectJ"指的就是切面类（本案例中的Aspect类）对应Bean的id。
+	5、Aspect类中环绕通知方法orderAround(ProceedingJoinPoint pjp)。在参数中用到ProceedingJoinPoint类型参数，可以通过
+	      该传入参数获取目标方法信息，以及调用目标方法。
+	6、<aop:aspect ref="aspectJ">标签中各通知子标签中的arg-names属性，例如返回通知是如下这样定义的：
+		arg-names="customer,address,returnValue"
+	   这个属性要求Aspect类对应的返回通知方法必须有三个参数，前两个代表目标方法的两个参数（名称必须与切点表达式中的args指示器指定的名称一致）。
+	   另外一个代表目标方法的返回值类型，由returning="returnValue"属性指定。
+	7、<aop:declare-parents>标签：指定目标类（订单Order）的代理类的父类，用于增强目标代理类的功能，
+	    即目标Bean可以直接调用<aop:declare-parents>标签中default-impl属性指定的类中的方法 。其实就是引用其他接口实现类的功能。
+		
+		
+		
+		
+		
+		
