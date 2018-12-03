@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+						http://www.springframework.org/schema/beans/spring-beans.xsd
+						http://www.springframework.org/schema/aop
+						http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+						http://www.springframework.org/schema/context
+						http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+	<!-- 定义目标bean -->
+	<bean id="oder001" class="liu.aop.xml.Order"
+		  c:_0="#{'0001'}"
+		  c:_1="#{'完成'}"
+		  c:_2="#{1680.00}"/>
+	
+	<!--定义切面bean -->
+	<bean id="aspectJ" class="liu.aop.xml.AspectJ"/>  
+	
+	<!-- 定义切面配置 -->
+	<aop:config>
+		<!--引用切面bean-->
+		<aop:aspect ref="aspectJ">
+			<!--单独定义切点表达式，并且传入目标方法参数 -->
+			<aop:pointcut 
+				id="p-orderPay" 
+				expression="execution(public String liu.aop.xml.Order.pay(..)) and args(customer,address)" /> 
+			
+			<!--定义前置通知，引用切点表达式"p-orderPay"，另外arg-names属性中参数名称与数量必须与切点表达式args中的一致。 -->
+			<aop:before  
+				method="oderBefore" 
+				arg-names="customer,address"  
+				pointcut-ref="p-orderPay"/> 
+			
+			<!--定义环绕通知，并自定义切点表达式 -->
+			<aop:around 
+				method="orderAround"
+				pointcut="execution(public String liu.aop.xml.Order.pay())"/>  
+			
+			<!--定义后置通知，并自定义切点表达式 -->
+			<aop:after 
+				method="oderAfter"
+				arg-names="customer,address"
+				pointcut="execution(public String liu.aop.xml.Order.pay(..)) and args(customer,address)"/>
+			
+			<!--定义返回通知 ,【注意！arg-names属性对应参数是3个，其中两个是目标方法参数，另外一个是目标方法返回值】-->
+			<aop:after-returning 
+				method="oderAfterReturn"
+				arg-names="customer,address,returnValue"
+				returning="returnValue"
+				pointcut="execution(public String liu.aop.xml.Order.pay(..)) and args(customer,address)"/>
+			
+			<!--定义异常通知 -->
+			<aop:after-throwing 
+				method="oderAfterThrowing"
+				arg-names="customer,age,exception"
+				throwing="exception"
+				pointcut="execution(public double liu.aop.xml.Order.pay(..)) and args(customer,age)"/>			
+		</aop:aspect>
+	</aop:config>
+	
+
+
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
