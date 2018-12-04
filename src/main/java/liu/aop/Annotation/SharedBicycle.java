@@ -23,6 +23,7 @@ public class SharedBicycle {
 		System.out.println("共享单车品牌："+bran+"   "+"共享单车厂家： "+manufactor);
 		return this.lockStatus;
 	}
+	
 
 	public String getBicycleID() {
 		return bicycleID;

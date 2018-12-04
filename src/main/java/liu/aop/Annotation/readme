@@ -3,4 +3,24 @@
 	  @EnableAspectJAutoProxy、@Aspect、@Pointcut、@Around、
 	  @After、@AfterReturning和
 二、源代码文件（.java）介绍：
+	【SharedBicycle】：POJO,共享单车。
+	【Recharge】：接口。（充值）。用于测试AOP引用功能。
+	【RechargeImpl】：POJO，充值Recharge接口实现类。用于测试AOP引用功能。
+	【AccountException】：账户异常，自定义异常类。
+	【BlacklistException】：黑名单异常，自定义异常类。
+	
+	【AspectJConfig】：AOP配置类。主要用于配置切面Aspect、切点Pointcut表达式、通知Advice。
+		1、该类使用了@Configuration注解，表明它是一个配置类。
+		2、该类使用了@Aspect注解，说明该类是一个切面Bean。
+		3、该类使用了@EnableAspectJAutoProxy注解，说明它使用cglib进行代理对象的生成。
+		4、该类使用了@Pointcut注解，该注解用于单独定义切点。
+		5、该类使用了@Before注解，该注解用于声明前置通知方法以及定义对应的切点表达式。
+		6、该类使用了@Around注解，该注解用于声明环绕通知方法以及定义对应的切点表达式。
+		7、该类使用了@After注解，该注解用于声明后置通知方法以及定义对应的切点表达式。
+		8、该类使用了@AfterReturning注解，该注解用于声明返回通知方法以及对应的切点表达式。
+		9、该类使用了@AfterThrowing注解，该注解用于声明异常通知方法以及对应的切点表达式。
+		10、该类使用了@DeclareParents注解，通过该注解引入新的方法。
+	
 三、知识点：
+	1、异常通知（AfterThrowing）：如果在其他通知方法中对异常进行了捕获（即try...catch语句），将会导致异常通知方法不会被执行。
+	2、环绕通知（Aruand）对应的方法必须添加返回类型，不能设置为void。

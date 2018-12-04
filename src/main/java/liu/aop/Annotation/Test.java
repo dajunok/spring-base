@@ -3,9 +3,11 @@ package liu.aop.Annotation;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import liu.aop.xml.OrderException;
+
 public class Test {
 	@SuppressWarnings("resource")
-	public static void main(String[] args) throws BlacklistException  {
+	public static void main(String[] args) throws BlacklistException, OrderException  {
 		ApplicationContext context=new AnnotationConfigApplicationContext(AspectJConfig.class);
 		SharedBicycle bicycle=context.getBean("shared001",SharedBicycle.class);
 		
