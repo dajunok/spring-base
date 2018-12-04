@@ -1,0 +1,6 @@
+一、案例说明：
+	1、案例完全采用注解的方式配置AOP功能。其中主要用到的注解有：@Configuration、
+	  @EnableAspectJAutoProxy、@Aspect、@Pointcut、@Around、
+	  @After、@AfterReturning和
+二、源代码文件（.java）介绍：
+三、知识点：

@@ -36,8 +36,8 @@
 			
 			<!--定义环绕通知，并自定义切点表达式 -->
 			<aop:around 
-				method="orderAround"
-				pointcut="execution(public String liu.aop.xml.Order.pay())"/>  
+				method="orderAround"			
+				pointcut="execution(public String liu.aop.xml.Order.pay(..))"/>  
 			
 			<!--定义后置通知，并自定义切点表达式 -->
 			<aop:after 

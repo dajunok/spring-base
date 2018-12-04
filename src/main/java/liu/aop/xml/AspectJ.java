@@ -16,14 +16,16 @@ public class AspectJ {
 	}
 	
 	//环绕通知对应方法
-	public void orderAround(ProceedingJoinPoint pjp)   {
+	public Object orderAround(ProceedingJoinPoint pjp)   {
+		Object result=null;
 		System.out.println("调用代理类方法：orderAround() 目标bean方法前");
 		try {
-			pjp.proceed();  //调用目标bean方法
+			result=pjp.proceed();  //调用目标bean方法
 		}catch (Throwable e) {
 			e.printStackTrace();
 		}
 		System.out.println("调用代理类方法：orderAround() 目标bean方法后");
+		return result;
 	}
 	
 	//后置通知对应方法

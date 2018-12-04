@@ -36,7 +36,10 @@
 	   这个属性要求Aspect类对应的返回通知方法必须有三个参数，前两个代表目标方法的两个参数（名称必须与切点表达式中的args指示器指定的名称一致）。
 	   另外一个代表目标方法的返回值类型，由returning="returnValue"属性指定。
 	7、<aop:declare-parents>标签：指定目标类（订单Order）的代理类的父类，用于增强目标代理类的功能，
-	    即目标Bean可以直接调用<aop:declare-parents>标签中default-impl属性指定的类中的方法 。其实就是引用其他接口实现类的功能。
+	    即可以使用AOP引用功能将目标Bean强制转换成增强类，然后调用增强接口方法（<aop:declare-parents>标签中default-impl属性指定的类中的方法 ）。
+	    其实就是引用其他接口实现类的功能。
+	    
+	8、环绕通知（around）对应方法必须提供返回类型，不能设置为void。
 		
 		
 		
