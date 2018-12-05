@@ -1,4 +1,6 @@
 package liu.aop.Designator;
+
+
 /**
  * 工人
  * @author LIU
@@ -7,17 +9,32 @@ package liu.aop.Designator;
  *	duty：上班
  *	steelMaking：炼钢
  */
-public class Worker implements City{
-
-	@Override
-	public void duty() {
-		System.out.println("作为工人，在城市要踏踏实实去上班......");
-		
+public class Worker {
+	private String name; //姓名
+	private String workKind; //工种
+	private Integer age; //年龄
+	
+	public Worker(String name, String workKind, Integer age) {
+		super();
+		this.name = name;
+		this.workKind = workKind;
+		this.age = age;
+	}
+	
+	public String getName() {
+		return name;
 	}
 
-	@Override
-	public void steelMaking() {
-		System.out.println("作为工人，要给国家大炼钢铁让国家早日实现工业大国梦想.........");
+	public String getWorkKind() {
+		return workKind;
 	}
+
+	public Integer getAge() {
+		return age;
+	}
+
+
+
+
 	
 }

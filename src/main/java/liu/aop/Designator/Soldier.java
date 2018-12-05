@@ -3,21 +3,28 @@ package liu.aop.Designator;
  * 军人
  * @author LIU
  * Soldier：战士
- * Fight：打仗
- * shoot：射击
  */
-public class Soldier implements Troops{
-
-	@Override
-	public void Fight() {
-		System.out.println("军人打仗就有流血牺牲......");
-		
+public class Soldier {
+	private String name;          //姓名
+	private String militaryRank;  //军衔
+	
+	public Soldier(String name, String militaryRank) {
+		super();
+		this.name = name;
+		this.militaryRank = militaryRank;
+	}
+	
+	public String getName() {
+		return name;
 	}
 
-	@Override
-	public void shoot() {
-		System.out.println("是军人就要刻苦练习射击技术......");
-		
+	public String getMilitaryRank() {
+		return militaryRank;
 	}
+
+
+
+
+
 	
 }

@@ -4,11 +4,29 @@ package liu.aop.Designator;
  * @author LIU
  *
  */
-public class Student implements School{
-
-	@Override
-	public void attendClass() {
-		System.out.println("作为学生,在学校要认认真真上课，不能开小差......");		
+public class Student {
+	private String name;  //姓名
+	private String classes; //班级
+	private Integer totalScore;  //总成绩
+	
+	public Student(String name, String classes,Integer totalScore) {
+		super();
+		this.name = name;
+		this.classes = classes;
+		this.totalScore=totalScore;
 	}
+
+	public String getName() {
+		return name;
+	}
+	public Integer getTotalScores() {
+		return totalScore;
+	}
+	
+	public String getClasses() {
+		return classes;
+	}
+
+	
 
 }
