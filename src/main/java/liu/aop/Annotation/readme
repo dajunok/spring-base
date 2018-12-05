@@ -4,8 +4,9 @@
 	  @After、@AfterReturning和
 二、源代码文件（.java）介绍：
 	【SharedBicycle】：POJO,共享单车。
-	【Recharge】：接口。（充值）。用于测试AOP引用功能。
-	【RechargeImpl】：POJO，充值Recharge接口实现类。用于测试AOP引用功能。
+	【Recharge】：接口。（充值接口）。用于测试AOP引用功能。
+	【RechargeImpl】：POJO，（充值类）。Recharge接口实现类。用于测试AOP引用功能。
+	【BicycleAccount】：POJO，共享单车账户。
 	【AccountException】：账户异常，自定义异常类。
 	【BlacklistException】：黑名单异常，自定义异常类。
 	
@@ -20,7 +21,15 @@
 		8、该类使用了@AfterReturning注解，该注解用于声明返回通知方法以及对应的切点表达式。
 		9、该类使用了@AfterThrowing注解，该注解用于声明异常通知方法以及对应的切点表达式。
 		10、该类使用了@DeclareParents注解，通过该注解引入新的方法。
+		11、该类实现了Ordered接口，处理相同接口实现类的优先级问题
+	
 	
 三、知识点：
 	1、异常通知（AfterThrowing）：如果在其他通知方法中对异常进行了捕获（即try...catch语句），将会导致异常通知方法不会被执行。
 	2、环绕通知（Aruand）对应的方法必须添加返回类型，不能设置为void。
+	3、@DeclareParents注解：它的主要作用是将IOC容器外部类（非bean）通过cglib动态代理织入到bean中，然后将目标bean转换成外部接口类型，
+	      这样就可以调用外部类的方法了，达到增强bean功能的作用。
+	4、Ordered接口：Spring中提供了一个Ordered接口。Ordered接口，顾名思义，就是用来排序的。Spring是一个大量使用策略设计模式的框架，
+	      这意味着有很多相同接口的实现类，那么必定会有优先级的问题。 于是，Spring就提供了Ordered这个接口，来处理相同接口实现类的优先级问题。
+	     例如：当系统中存在多个javaConfig配置类，实现了Ordered接口的配置类中的Bean会优先注册。如果都实现了接口，那么通过重写getOrder()方法获取一个整数值，
+	     值小的会优先于值大的。另外一种使用方式是直接添加@Order(1)注解，功能相似。

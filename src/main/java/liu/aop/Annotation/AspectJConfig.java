@@ -15,7 +15,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.core.Ordered;
 
-import liu.aop.xml.OrderException;
 
 @Configuration
 @EnableAspectJAutoProxy
@@ -28,10 +27,10 @@ public class AspectJConfig implements Ordered{
 		return new SharedBicycle(bicycleID, lockStatus);
 	}
 	
-	//
+	//创建共享单车账户bean
 	@Bean("bicycleAccount")
 	public BicycleAccount bicycleAccount(@Value("#{'ac001'}") String id,
-			@Value("#{3000.00}") float amount)
+			@Value("#{0.00}") float amount)
 	{
 		return new BicycleAccount(id, amount);
 	}

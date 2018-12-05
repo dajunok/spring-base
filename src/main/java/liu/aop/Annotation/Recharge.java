@@ -5,6 +5,6 @@ package liu.aop.Annotation;
  *
  */
 public interface Recharge {
-	float pay(float money);  //给共享单车账户充值
-	void checkBalance() throws AccountException;  //检查余额
+	float pay(BicycleAccount account,float money);  //给共享单车账户充值
+	void checkBalance(BicycleAccount account) throws AccountException;  //检查余额
 }

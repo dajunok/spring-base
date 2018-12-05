@@ -1,0 +1,35 @@
+一、案例说明：
+	1、案例采用AspectConfig类专门定义切面。
+	2、案例在XML配置文件中定义bean(包括定义切面bean)。并通过<aop:aspectj-autoproxy/>标签启动AspectJ。
+	3、案例在XML配置文件中使用<context:component-scan> 自动激活@Component注解声明的bean（包括切面类）。
+二、源代码文件（.java）介绍：
+	【AdviceManager.java】：POJO，（通知管理器）目标类。
+	【AspectConfig.java】：切面配置类。主要用于定义切点表达式、通知方法。
+		1、该类使用了@Aspect注解，表明它是一个切面配置 类。
+	
+	【Test.java】：案例调试类。
+		1、使用ClassPathXmlApplicationContext类获取XML资源配置文件。
+		
+	【spring-aopadvice.xml】：XML配置文件。用于定义bean、启动AspectJ、激活@component注解声明的bean。
+		1、该XML配置文件使用了<aop:aspectj-autoproxy/>标签，用于启动spring AspectJ。
+		2、该XML配置文件使用了<bean id="adviceAspect" class="liu.aop.Advice.AspectConfig"/>标签创建切面bean。
+		3、该XML配置文件使用了<context:component-scan>标签自动激活@component注解声明的bean，
+		       并通过子标签<context:exclude-filter>排除spring内部自动创建的切面bean。
+			<context:component-scan base-package="liu.aop.Advice" annotation-config="true">
+				<context:exclude-filter type="annotation" expression="org.aspectj.lang.annotation.Aspect"/>
+			</context:component-scan>
+三、知识点：
+	1、<aop:aspectj-autoproxy/>标签：在XML配置文件中通过该标签启动AspectJ自动代理功能。它取缔了完全手工配置的<aop:config>标签。
+	2、<context:component-scan>标签的运用：
+		方式<1>：指定自动搜索Bean组件，自动搜索切面类 并包含注解对应的切面类，这样不用单独创建切面Bean。
+		<context:component-scan base-package="liu.aopAdvice" annotation-config="true">
+			<context:include-filter type="annotation" expression="org.aspectj.lang.annotation.Aspect"/>
+		</context:component-scan>
+		
+		方式<2>：context:component-scan>标签指定自动搜索Bean组件，并排除注解对应的切面类,这时需要单独将切面类注入
+		<!-- 创建切面Bean，切面必须是一个Bean -->
+		<bean id="adviceAspect" class="liu.aop.Advice.AspectConfig"/>	
+		<!-- 指定自动搜索Bean组件，排除注解对应的切面类,这时需要单独将切面类注入，防止aspectj失效-->
+		<context:component-scan base-package="liu.aop.Advice" annotation-config="true">
+			<context:exclude-filter type="annotation" expression="org.aspectj.lang.annotation.Aspect"/>
+		</context:component-scan>

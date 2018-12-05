@@ -17,7 +17,7 @@ public class SharedBicycle {
 
 	public Integer qrCodeScan(String bran,String manufactor) throws BlacklistException {  //共享单车扫二维码开锁骑行,传入参数：qrCodeScan（品牌，厂家）
 		if(bran=="mobike") {
-			throw new BlacklistException("黑名单异常");
+			throw new BlacklistException("黑名单异常");  //抛出异常，用于测试AspectJ异常通知
 		}
 		this.lockStatus=1;
 		System.out.println("共享单车品牌："+bran+"   "+"共享单车厂家： "+manufactor);
