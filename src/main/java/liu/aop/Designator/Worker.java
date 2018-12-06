@@ -33,7 +33,15 @@ public class Worker {
 		return age;
 	}
 
-
+	public int steelMaking(City city,Integer count) {
+		city.steelMaking();
+		return count;   //炼钢吨数
+	}
+	
+	public Integer duty(City city,int count) {
+		city.duty();		
+		return count;  //上班小时数
+	}
 
 
 	

@@ -1,4 +1,7 @@
 package liu.aop.Designator;
+
+import ch.qos.logback.core.joran.conditional.IfAction;
+
 /**
  * 农民：
  * @author LIU
@@ -10,7 +13,6 @@ package liu.aop.Designator;
 public class Farmer {
 	private String name;  //姓名
 	private String nativePlace;  //籍贯
-	private CountrysideImpl countrysideImpl; 
 	
 	public Farmer(String name, String nativePlace) {
 		super();
@@ -34,14 +36,13 @@ public class Farmer {
 		this.nativePlace = nativePlace;
 	}
 
-	public void setCountrysideImpl(CountrysideImpl countrysideImpl) {
-		this.countrysideImpl = countrysideImpl;
+	public double  cultivate(Countryside countryside,Integer count) throws DesignatorException {
+		if(count>10) {
+			throw new DesignatorException("      指示器异常，该农民种植面积太大，不易管理！！");
+		}
+		countryside.cultivate();
+		return count; //种植数量
 	}
-
-	public CountrysideImpl getCountrysideImpl() {
-		return countrysideImpl;
-	}
-	
 	
 	
 }

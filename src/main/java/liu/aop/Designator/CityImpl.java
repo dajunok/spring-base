@@ -10,13 +10,13 @@ public class CityImpl implements City {
 
 	@Override
 	public void duty() {
-		System.out.println("作为工人，在城市要踏踏实实去上班......");
+		System.out.println("      作为工人，在城市要踏踏实实去上班......");
 		
 	}
 
 	@Override
 	public void steelMaking() {
-		System.out.println("作为工人，要给国家大炼钢铁让国家早日实现工业大国梦想.........");
+		System.out.println("      作为工人，要给国家大炼钢铁让国家早日实现工业大国梦想.........");
 	}
 
 }

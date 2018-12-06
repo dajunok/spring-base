@@ -20,6 +20,7 @@
 		● @args(com.elim.spring.support.MyAnnotation)匹配方法参数类型上拥有MyAnnotation注解的方法调用。
 			如我们有一个方法add(MyParam param)接收一个MyParam类型的参数，而MyParam这个类是拥有注解MyAnnotation的，
 			则它可以被匹配上。
+		● 注意！只适应单个参数的目标方法，多个参数时无法对应。
 	4、target()：Spring Aop是基于代理的，target则表示被代理的目标bean。当被代理的目标bean可以被转换为指定的类型时则表示匹配。
 		● target(com.elim.spring.aop.service.IUserService)则匹配所有被代理的目标对象能够转换为IUserService类型的所有方法的外部调用。
 	5、@target()：匹配目标bean对应的类型及其父类型上拥有指定的注解。
@@ -43,7 +44,9 @@
 	          当生成的代理对象可以转换为type指定的类型时则表示匹配。基于JDK接口的代理和基于CGLIB的代理生成的代理对象是不一样的。
 		● this(com.elim.spring.aop.service.IUserService)匹配生成的代理对象是IUserService类型的所有方法的外部调用。
 	
-	
+附：注意事项：
+	1、在切面配置类中，所有独立切点定义应该放在所有通知定义的前面，不能与通知交叉放置。
+		
 	
 	
 	

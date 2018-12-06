@@ -4,12 +4,11 @@ package liu.aop.Designator;
  * @author dajun
  *
  */
-@FarmerIdentity
 public class CountrysideImpl implements Countryside{
 
 	@Override
 	public void cultivate() {
-		System.out.println("作为农民在农村要辛辛苦苦种地.........");
+		System.out.println("      作为农民在农村要辛辛苦苦种地.........");
 		
 	}
 

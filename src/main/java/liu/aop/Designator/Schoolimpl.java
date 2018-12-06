@@ -7,7 +7,7 @@ package liu.aop.Designator;
 public class Schoolimpl implements School{
 	@Override
 	public void attendClass() {
-		System.out.println("作为学生,在学校要认认真真上课，不能开小差......");		
+		System.out.println("      作为学生,在学校要认认真真上课，不能开小差......");		
 	}
 
 }

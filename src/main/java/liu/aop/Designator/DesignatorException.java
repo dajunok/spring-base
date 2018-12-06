@@ -5,26 +5,26 @@ package liu.aop.Designator;
  * @author LIU
  *
  */
-public class AbsenceException extends Exception {
+public class DesignatorException extends Exception {
 	private static final long serialVersionUID = -1509272605891135841L;
 	
-	public AbsenceException() {
+	public DesignatorException() {
         super();
     }
 	
-	 public AbsenceException(String message) {
+	 public DesignatorException(String message) {
 	        super(message);
 	    }
 	
-	 public AbsenceException(String message, Throwable cause) {
+	 public DesignatorException(String message, Throwable cause) {
 	        super(message, cause);
 	    }
 	 
-	 public AbsenceException(Throwable cause) {
+	 public DesignatorException(Throwable cause) {
 	        super(cause);
 	    }
 	
-	 protected AbsenceException(String message, Throwable cause,
+	 protected DesignatorException(String message, Throwable cause,
              boolean enableSuppression,
              boolean writableStackTrace) {
 		 super(message, cause, enableSuppression, writableStackTrace);
