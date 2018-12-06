@@ -1,6 +1,5 @@
 package liu.aop.Designator;
 
-import ch.qos.logback.core.joran.conditional.IfAction;
 
 /**
  * 农民：
@@ -27,13 +26,17 @@ public class Farmer {
 	public String getNativePlace() {
 		return nativePlace;
 	}
-
+	
+	@Identity("姓名")
 	public void setName(String name) {
 		this.name = name;
+		System.out.println("    姓名："+name);
 	}
 
+	@Identity(value="山西")
 	public void setNativePlace(String nativePlace) {
 		this.nativePlace = nativePlace;
+		System.out.println("    籍贯："+nativePlace);
 	}
 
 	public double  cultivate(Countryside countryside,Integer count) throws DesignatorException {

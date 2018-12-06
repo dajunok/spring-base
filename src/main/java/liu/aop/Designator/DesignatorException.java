@@ -1,7 +1,7 @@
 package liu.aop.Designator;
 
 /**
- * 自定义异常类：缺勤
+ * 指示器异常：自定义异常，用于测试AspectJ异常通知
  * @author LIU
  *
  */

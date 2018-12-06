@@ -36,7 +36,7 @@ public class JavaConfig {
 	@Bean("worker")  //工人
 	public Worker byWorker(@Value("#{'张秉贵'}") String name,
 						   @Value("#{'售货员'}") String workKind,
-			               @Value("#{38}") int age) {
+			               @Value("#{28}") int age) {
 		return new Worker(name, workKind, age);
 	}
 	

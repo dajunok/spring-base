@@ -3,6 +3,9 @@
 	  within()、@within()、@annotation和bean()。等等指示器。
 	2、案例在切点（Poincut）表达式中还综合的运用了表达式运算符：&& || !  分别对应与操作（and)、或操作（or)、非操作（not）。
 二、源代码文件（.java）介绍：
+	【AspectJConfig.java】：切面定义类。
+	【JavaConfig.java】：javaConfig配置类。主要用于定义Bean（包含定义切面Bean）。
+	
 三、知识点：
 	1、execution()：是使用的最多的一种Pointcut表达式函数，表示某个方法的执行，其标准语法如下：	
 		execution(modifiers-pattern? ret-type-pattern declaring-type-pattern? name-pattern(param-pattern) throws-pattern?)

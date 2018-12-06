@@ -3,9 +3,9 @@ package liu.aop.Designator;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.DeclareParents;
 import org.aspectj.lang.annotation.Pointcut;
-import org.springframework.core.annotation.Order;
 
 /**
  * 切面定义类
@@ -22,6 +22,7 @@ public class AspectJConfig {
 	public Object  byExecution(ProceedingJoinPoint point) throws Throwable {
 		Object result;
 		String str=point.toString();
+		System.out.println(".............测试execution()指示器（切点表达式函数）");
 		System.out.println("环绕通知Around：\n"+"      执行目标对象之前打印：【"+str+"】"+"liulijun");
 		result=point.proceed();
 		System.out.println("      执行目标对象之后打印：【"+str+"】"+"liulijun\n");
@@ -33,6 +34,7 @@ public class AspectJConfig {
 	public Object byArgs(ProceedingJoinPoint point,Object city,Object count) throws Throwable {
 		Object result;
 		String str=point.toString();
+		System.out.println(".............测试args()指示器（切点表达式函数）");
 		System.out.println("环绕通知Around：\n"+"      执行目标对象之前打印：【"+str+"】"+"zhangsan");
 		result=point.proceed();
 		System.out.println("      执行目标对象之后打印：【"+str+"】"+"zhangsan\n");
@@ -44,34 +46,60 @@ public class AspectJConfig {
 	public Object byaArgs(ProceedingJoinPoint point) throws Throwable {
 		Object result;
 		String str=point.toString();
+		System.out.println(".............测试@args()指示器（切点表达式函数）");
 		System.out.println("环绕通知Around：\n"+"      执行目标对象之前打印：【"+str+"】");
 		result=point.proceed();
 		System.out.println("      执行目标对象之后打印：【"+str+"】\n");
 		return result;
 	}
 	
-/*	//测试target()指示器（表达式函数）
-		@Around(value="execution(public * liu.aop.Designator.Student.*(..)) && target(liu.aop.Designator.Consumer)")
-		public Object byTarget(ProceedingJoinPoint point) throws Throwable {
-			Object result;
-			String str=point.toString();
-			System.out.println("环绕通知Around：\n"+"      执行目标对象之前打印：【"+str+"】");
-			result=point.proceed();
-			System.out.println("      执行目标对象之后打印：【"+str+"】\n");
-			return result;
-		}*/
+  	//测试target()指示器（表达式函数）
+	@Around(value="execution(public * liu.aop.Designator.Student.attendClass(..)) && target(liu.aop.Designator.Consumer)")
+	public Object byTarget(ProceedingJoinPoint point) throws Throwable {
+		Object result;
+		String str=point.toString();
+		System.out.println(".............测试target()指示器（切点表达式函数）");
+		System.out.println("环绕通知Around：\n"+"      执行目标对象之前打印：【"+str+"】");
+		result=point.proceed();
+		System.out.println("      执行目标对象之后打印：【"+str+"】\n");
+		return result;
+	}
 	
 	//测试@target()指示器（表达式函数）
-		@Around(value="execution(public * liu.aop.Designator.Student.getName(..)) && @target(liu.aop.Designator.Identity)")
-		public Object byaTarget(ProceedingJoinPoint point) throws Throwable {
-			Object result;
-			String str=point.toString();
-			System.out.println("环绕通知Around：\n"+"      执行目标对象之前打印：【"+str+"】");
-			result=point.proceed();
-			System.out.println("      执行目标对象之后打印：【"+str+"】\n");
-			return result;
-		}
+	@Around(value="execution(public * liu.aop.Designator.Student.getName(..)) && @target(liu.aop.Designator.Identity)")
+	public Object byaTarget(ProceedingJoinPoint point) throws Throwable {
+		Object result;
+		String str=point.toString();
+		System.out.println(".............测试@target()指示器（切点表达式函数）");
+		System.out.println("环绕通知Around：\n"+"      执行目标对象之前打印：【"+str+"】");
+		result=point.proceed();
+		System.out.println("      执行目标对象之后打印：【"+str+"】\n");
+		return result;
+	}
 	
+	//测试within()指示器（切点表达式函数）
+	@Before(value="within(liu.aop.Designator.Worker)")
+	public void byWithin() {
+		System.out.println("前置通知Before......测试within()指示器（切点表达式函数）");
+	}
+	
+	//测试@annotation()指示器（切点表达式函数）
+	@Before(value="@annotation(liu.aop.Designator.Identity)")
+	public void byannotation() {
+		System.out.println("前置通知Before......测试@annotation()指示器（切点表达式函数）.........");
+	}
+	
+	//测试bean()指示器（切点表达式函数）
+	@Before(value="bean(worker)")
+	public void byBean() {
+		System.out.println("前置通知Before......测试bean()指示器（切点表达式函数）.........");
+	}
+	
+	//测试this()指示器（切点表达式函数）
+	@Before(value="this(liu.aop.Designator.Countryside)")
+	public void byThis() {
+		System.out.println("前置通知Before......测试this()指示器（切点表达式函数）.........");
+	}
 	
 	//*********************AOP引用接口新方法**************************************
 	@DeclareParents(value="liu.aop.Designator.Farmer+",defaultImpl=CountrysideImpl.class)

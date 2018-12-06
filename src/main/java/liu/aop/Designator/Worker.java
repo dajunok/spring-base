@@ -22,14 +22,17 @@ public class Worker {
 	}
 	
 	public String getName() {
+		System.out.println("    工人姓名："+name);
 		return name;
 	}
 
 	public String getWorkKind() {
+		System.out.println("    工种："+workKind);
 		return workKind;
 	}
 
 	public Integer getAge() {
+		System.out.println("    工人年龄："+age);
 		return age;
 	}
 
