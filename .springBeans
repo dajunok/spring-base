@@ -16,6 +16,7 @@
 		<config>src/main/java/liu/wiring/noAutowiring/spring-Area.xml</config>
 		<config>src/main/java/liu/wiring/noAutowiring/spring-orderForm.xml</config>
 		<config>src/main/java/liu/aop/xml/spring-AspectJConfig.xml</config>
+		<config>src/main/java/liu/aop/GetCurrentMethod/spring-beanConfig.xml</config>
 	</configs>
 	<autoconfigs>
 	</autoconfigs>
