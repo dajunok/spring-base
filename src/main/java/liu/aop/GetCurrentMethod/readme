@@ -3,3 +3,7 @@
 	2、案例通过ProceedingJoinPoint参数调用当前方法、获取方法参数列表、方法修饰符、方法上面的注解、方法对应的类和接口等等信息。
 二、源代码文件（.java）介绍：
 二、源代码文件（.java）介绍：
+	1、通过ProceedingJoinPoint或者joinpoint参数类型，
+	      获取连接点（对应Spring AOP来说就是目标bean方法）信息。
+	      并且可以修改参数值、返回值等等。
+		

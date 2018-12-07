@@ -38,10 +38,10 @@ public class Company {
 	
 	@Safety("安全账户")
 	public double payment(Account account,double money) throws AccountException {
-		if(account.getAmount()<100000) {
-			throw new AccountException("账户异常：现金流短缺！！");
-		}
 		double sum=account.getAmount()+money;
+		if(sum<100000) {
+			throw new AccountException("账户异常：现金流短缺！！");
+		}		
 		System.out.println("    公司账户总额："+sum);
 		return sum;
 	}

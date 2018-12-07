@@ -10,7 +10,7 @@ public class Test {
 		Company company=context.getBean("company",Company.class);
 		Account account=context.getBean("account",Account.class);
 		
-		company.payment(account,50000);
+		company.payment(account,20000);
 		
 	}
 	
